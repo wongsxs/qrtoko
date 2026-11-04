@@ -47,6 +47,9 @@
     "DB_DATABASE": "postgres",
     "DB_USERNAME": "postgres.tnkhcgwyobggmrhrcwfs",
     "DB_PASSWORD": "Wahyudi123@",
-    "DB_SSLMODE": "require"
+    "DB_SSLMODE": "require",
+    "SUPABASE_URL": "https://tnkhcgwyobggmrhrcwfs.supabase.co",
+    "SUPABASE_KEY": "sb_publishable_p_ZW-h4DtnihJH3GD7zDKA_BISeutvV",
+    "SUPABASE_BUCKET": "media"
   }
 }

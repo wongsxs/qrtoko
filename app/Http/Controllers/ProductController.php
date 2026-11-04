@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Store;
+use App\Services\SupabaseStorageService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
+    public function __construct(
+        protected SupabaseStorageService $storageService
+    ) {}
+
     /**
      * Store a newly created product in storage.
      */
@@ -30,7 +34,7 @@ class ProductController extends Controller
         $validated['is_available'] = $request->boolean('is_available', true);
 
         if ($request->hasFile('image')) {
-            $validated['image_url'] = $request->file('image')->store('products', 'public');
+            $validated['image_url'] = $this->storageService->upload($request->file('image'), 'products');
         }
 
         $store->products()->create($validated);
@@ -59,10 +63,10 @@ class ProductController extends Controller
         $validated['is_available'] = $request->boolean('is_available');
 
         if ($request->hasFile('image')) {
-            if ($product->image_url && Storage::disk('public')->exists($product->image_url)) {
-                Storage::disk('public')->delete($product->image_url);
+            if ($product->image_url) {
+                $this->storageService->delete($product->image_url);
             }
-            $validated['image_url'] = $request->file('image')->store('products', 'public');
+            $validated['image_url'] = $this->storageService->upload($request->file('image'), 'products');
         }
 
         $product->update($validated);
@@ -79,8 +83,8 @@ class ProductController extends Controller
     {
         $this->authorizeStore($store);
 
-        if ($product->image_url && Storage::disk('public')->exists($product->image_url)) {
-            Storage::disk('public')->delete($product->image_url);
+        if ($product->image_url) {
+            $this->storageService->delete($product->image_url);
         }
 
         $name = $product->name;

@@ -4,14 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreRequest;
 use App\Models\Store;
+use App\Services\SupabaseStorageService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class StoreController extends Controller
 {
+    public function __construct(
+        protected SupabaseStorageService $storageService
+    ) {}
+
     /**
      * Display a listing of registered stores.
      */
@@ -57,7 +61,7 @@ class StoreController extends Controller
         $data['facilities'] = $request->input('facilities', []);
 
         if ($request->hasFile('logo')) {
-            $data['logo'] = $request->file('logo')->store('logos', 'public');
+            $data['logo'] = $this->storageService->upload($request->file('logo'), 'logos');
         }
 
         $store = Store::create($data);
@@ -106,10 +110,10 @@ class StoreController extends Controller
         $data['facilities'] = $request->input('facilities', []);
 
         if ($request->hasFile('logo')) {
-            if ($store->logo && Storage::disk('public')->exists($store->logo)) {
-                Storage::disk('public')->delete($store->logo);
+            if ($store->logo) {
+                $this->storageService->delete($store->logo);
             }
-            $data['logo'] = $request->file('logo')->store('logos', 'public');
+            $data['logo'] = $this->storageService->upload($request->file('logo'), 'logos');
         }
 
         $store->update($data);
@@ -134,8 +138,8 @@ class StoreController extends Controller
     {
         $this->authorizeStore($store);
 
-        if ($store->logo && Storage::disk('public')->exists($store->logo)) {
-            Storage::disk('public')->delete($store->logo);
+        if ($store->logo) {
+            $this->storageService->delete($store->logo);
         }
 
         $store->delete();
