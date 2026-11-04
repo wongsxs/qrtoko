@@ -66,8 +66,8 @@
                         <!-- Top Bar: Simple Operational Status & Utilities -->
                         <div class="flex items-center justify-between mb-4">
                             <!-- Simplified Status Indicator -->
-                            <div class="inline-flex items-center gap-1.5 text-xs font-medium">
-                                <span class="w-2 h-2 rounded-full {{ $store->is_open ? 'bg-emerald-400' : 'bg-rose-400' }}"></span>
+                            <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.08] border border-white/10 text-xs font-medium">
+                                <span class="w-1.5 h-1.5 rounded-full {{ $store->is_open ? 'bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]' : 'bg-rose-400' }}"></span>
                                 <span class="{{ $store->is_open ? 'text-emerald-300' : 'text-rose-300' }}">
                                     {{ $store->is_open ? 'Buka Hari Ini' : 'Tutup Sementara' }}
                                 </span>
@@ -226,11 +226,14 @@
 
                         <!-- Secondary Utilities: Bagi QR & Standee Meja -->
                         <div class="pt-3 border-t border-stone-100 flex items-center gap-2">
-                            <button type="button" onclick="openQrModal()" class="flex-1 py-2 px-3 rounded-xl border border-stone-200 hover:bg-[#faf7f2] text-stone-700 text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer">
-                                <img src="{{ asset('icons/retro/qr-scan.png') }}" class="w-4 h-4 object-contain" alt="">
-                                <span>Bagi QR Toko</span>
+                            <button type="button" onclick="openQrModal()" class="flex-1 py-2 px-2.5 rounded-xl bg-[#faf7f2] hover:bg-white text-stone-700 hover:text-stone-900 border border-[#e2d9cb] hover:border-[#b47b2b]/50 text-xs font-semibold flex items-center justify-center gap-1.5 transition-all shadow-2xs cursor-pointer">
+                                <img src="{{ asset('icons/retro/qr-scan.png') }}" class="w-3.5 h-3.5 object-contain shrink-0" alt="">
+                                <span>Bagi QR</span>
                             </button>
-                            <a href="{{ route('stores.qr', $store->slug) }}" class="flex-1 py-2 px-3 rounded-xl bg-[#24160e] hover:bg-[#1a0f09] text-[#f7f2ea] text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors shadow-2xs">
+                            <a href="{{ route('stores.qr', $store->slug) }}" class="flex-1 py-2 px-2.5 rounded-xl bg-[#faf7f2] hover:bg-white text-stone-700 hover:text-stone-900 border border-[#e2d9cb] hover:border-[#b47b2b]/50 text-xs font-semibold flex items-center justify-center gap-1.5 transition-all shadow-2xs">
+                                <svg class="w-3.5 h-3.5 text-stone-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
+                                </svg>
                                 <span>Cetak Standee</span>
                             </a>
                         </div>
@@ -239,14 +242,16 @@
 
                 </div>
 
-                <!-- Desktop / Tablet QR Box helper (Hidden on small mobile screens, visible on md+) -->
-                <div class="hidden md:block bg-white rounded-2xl sm:rounded-3xl p-5 border border-[#e8e2d4] shadow-xs text-center space-y-3">
-                    <div class="inline-flex items-center gap-2 text-xs font-bold text-stone-700">
-                        <img src="{{ asset('icons/retro/qr-scan.png') }}" class="w-4 h-4 object-contain shrink-0" alt="QR Scan">
-                        <span>Buka Menu di Ponsel</span>
+                <!-- Desktop / Tablet QR Box helper (Compact & Elegant) -->
+                <div class="hidden md:flex items-center gap-3 bg-white rounded-2xl p-3 border border-[#e8e2d4] shadow-xs">
+                    <div id="desktop-qrcode" class="shrink-0 p-1 bg-[#faf7f2] rounded-xl border border-[#e8e2d4]"></div>
+                    <div class="text-left space-y-0.5">
+                        <span class="inline-flex items-center gap-1.5 text-xs font-bold text-stone-800">
+                            <img src="{{ asset('icons/retro/qr-scan.png') }}" class="w-3.5 h-3.5 object-contain" alt="">
+                            <span>Buka di Ponsel</span>
+                        </span>
+                        <p class="text-[11px] text-stone-500 leading-snug">Scan dengan kamera HP untuk membawa menu langsung ke meja.</p>
                     </div>
-                    <div id="desktop-qrcode" class="flex justify-center p-3 bg-[#faf7f2] rounded-xl border border-stone-200/80"></div>
-                    <p class="text-[11px] text-stone-400">Scan QR Code di atas menggunakan kamera HP untuk membuka menu ini.</p>
                 </div>
 
             </div>
@@ -398,12 +403,12 @@
                                             </div>
 
                                             <div class="mt-3 pt-2.5 border-t border-stone-100 flex items-center justify-between">
-                                                <span class="text-sm sm:text-base font-extrabold text-[#1b4332] tracking-tight">
+                                                <span class="text-sm sm:text-base font-black text-[#1b4332] tracking-tight">
                                                     {{ $product->formatted_price }}
                                                 </span>
-                                                <span class="text-[11px] font-medium text-stone-400 group-hover:text-[#24160e] transition-colors inline-flex items-center gap-1">
+                                                <span class="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-[#faf7f2] text-stone-600 border border-[#e2d9cb] group-hover:bg-[#24160e] group-hover:text-[#f7f2ea] group-hover:border-[#24160e] transition-all inline-flex items-center gap-1">
                                                     <span>Detail</span>
-                                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <svg class="w-3 h-3 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                                                     </svg>
                                                 </span>
@@ -546,16 +551,16 @@
             });
         }
 
-        // Desktop QR render
+        // Desktop QR render (Compact badge)
         const desktopBox = document.getElementById("desktop-qrcode");
         if (desktopBox) {
             new QRCode(desktopBox, {
                 text: storeUrl,
-                width: 140,
-                height: 140,
+                width: 64,
+                height: 64,
                 colorDark : "#1c1917",
                 colorLight : "#faf7f2",
-                correctLevel : QRCode.CorrectLevel.H
+                correctLevel : QRCode.CorrectLevel.M
             });
         }
 
