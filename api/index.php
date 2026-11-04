@@ -14,6 +14,9 @@ foreach ($storageDirs as $dir) {
     }
 }
 
+$_ENV['LARAVEL_STORAGE_PATH'] = '/tmp/storage';
+$_SERVER['LARAVEL_STORAGE_PATH'] = '/tmp/storage';
+
 // Copy pre-seeded SQLite database to writable /tmp directory
 $tmpDb = '/tmp/database.sqlite';
 $sourceDb = __DIR__ . '/../database/database.sqlite';

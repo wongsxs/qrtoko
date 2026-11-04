@@ -9,7 +9,16 @@
   },
   "routes": [
     {
-      "handle": "filesystem"
+      "src": "/build/(.*)",
+      "dest": "/build/$1"
+    },
+    {
+      "src": "/storage/(.*)",
+      "dest": "/storage/$1"
+    },
+    {
+      "src": "/(.*)\\.(ico|txt|png|jpg|jpeg|svg|webp|woff|woff2|css|js|map)",
+      "dest": "/$1.$2"
     },
     {
       "src": "/(.*)",
@@ -26,6 +35,8 @@
     "APP_ROUTES_CACHE": "/tmp/routes.php",
     "APP_SERVICES_CACHE": "/tmp/services.php",
     "VIEW_COMPILED_PATH": "/tmp/storage/framework/views",
+    "LARAVEL_STORAGE_PATH": "/tmp/storage",
+    "LOG_CHANNEL": "stderr",
     "CACHE_STORE": "array",
     "SESSION_DRIVER": "cookie",
     "DB_CONNECTION": "sqlite",
