@@ -3,7 +3,34 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <title>{{ $store->name }} — Profil Toko & Menu</title>
+    
+    @php
+        $ogTitle = $store->name . ' — Profil Toko & Menu';
+        $ogDescription = $store->tagline ?: ($store->description ?: 'Lihat daftar menu lengkap, harga terbaru, dan info jam buka ' . $store->name . ' di sini.');
+        $ogUrl = route('stores.show', $store->slug);
+    @endphp
+
+    <title>{{ $ogTitle }}</title>
+    <meta name="description" content="{{ $ogDescription }}">
+
+    <!-- Open Graph / WhatsApp / Facebook / Telegram Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="QRToko">
+    <meta property="og:url" content="{{ $ogUrl }}">
+    <meta property="og:title" content="{{ $ogTitle }}">
+    <meta property="og:description" content="{{ $ogDescription }}">
+    @if($store->logo_url)
+        <meta property="og:image" content="{{ $store->logo_url }}">
+        <meta property="og:image:secure_url" content="{{ $store->logo_url }}">
+    @endif
+
+    <!-- Twitter / X Sharing -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ $ogTitle }}">
+    <meta name="twitter:description" content="{{ $ogDescription }}">
+    @if($store->logo_url)
+        <meta name="twitter:image" content="{{ $store->logo_url }}">
+    @endif
     
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>

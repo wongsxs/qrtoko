@@ -4,6 +4,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? 'QR Toko - Platform Profil & Katalog Toko Berbasis QR Code' }}</title>
+    <meta name="description" content="Platform profil toko & katalog menu digital berbasis QR code untuk UMKM Indonesia. Cepat, praktis, tanpa aplikasi, dan siap cetak standee meja.">
+
+    <!-- Open Graph / WhatsApp / Facebook Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="QRToko">
+    <meta property="og:title" content="{{ $title ?? 'QR Toko - Platform Profil & Katalog Toko Berbasis QR Code' }}">
+    <meta property="og:description" content="Platform profil toko & katalog menu digital berbasis QR code untuk UMKM Indonesia. Cepat, praktis, tanpa aplikasi, dan siap cetak standee meja.">
+    <meta property="og:url" content="{{ url()->current() }}">
+
+    <!-- Twitter / X Sharing -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ $title ?? 'QR Toko - Platform Profil & Katalog Toko Berbasis QR Code' }}">
+    <meta name="twitter:description" content="Platform profil toko & katalog menu digital berbasis QR code untuk UMKM Indonesia. Cepat, praktis, tanpa aplikasi, dan siap cetak standee meja.">
     
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
