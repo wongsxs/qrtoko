@@ -1,5 +1,9 @@
 <?php
 
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+    $_SERVER['HTTPS'] = 'on';
+}
+
 // Ensure /tmp has necessary storage directories for views and cache
 $storageDirs = [
     '/tmp/storage/framework/views',
@@ -9,7 +13,7 @@ $storageDirs = [
 ];
 
 foreach ($storageDirs as $dir) {
-    if (!is_dir($dir)) {
+    if (! is_dir($dir)) {
         mkdir($dir, 0755, true);
     }
 }
@@ -19,8 +23,8 @@ $_SERVER['LARAVEL_STORAGE_PATH'] = '/tmp/storage';
 
 // Copy pre-seeded SQLite database to writable /tmp directory
 $tmpDb = '/tmp/database.sqlite';
-$sourceDb = __DIR__ . '/../database/database.sqlite';
-if (!file_exists($tmpDb)) {
+$sourceDb = __DIR__.'/../database/database.sqlite';
+if (! file_exists($tmpDb)) {
     if (file_exists($sourceDb)) {
         copy($sourceDb, $tmpDb);
     } else {
@@ -29,4 +33,4 @@ if (!file_exists($tmpDb)) {
 }
 
 // Require public/index.php to run Laravel
-require __DIR__ . '/../public/index.php';
+require __DIR__.'/../public/index.php';

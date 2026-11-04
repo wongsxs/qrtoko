@@ -26,6 +26,8 @@
     }
   ],
   "env": {
+    "APP_URL": "https://qrtoko.vercel.app",
+    "ASSET_URL": "https://qrtoko.vercel.app",
     "APP_ENV": "production",
     "APP_DEBUG": "false",
     "APP_KEY": "base64:jLN6p2nirM6lKdgfdCRPwyJCRUVTOvVhVN4edLugUfw=",
