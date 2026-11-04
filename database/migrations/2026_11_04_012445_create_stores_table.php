@@ -1,0 +1,39 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('stores', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('slug')->unique();
+            $table->string('tagline')->nullable();
+            $table->text('description')->nullable();
+            $table->string('phone');
+            $table->text('address')->nullable();
+            $table->string('maps_url')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('opening_hours')->nullable();
+            $table->boolean('is_open')->default(true);
+            $table->string('category')->default('Kuliner');
+            $table->string('theme_color')->default('#059669');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('stores');
+    }
+};
