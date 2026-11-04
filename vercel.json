@@ -41,7 +41,12 @@
     "LOG_CHANNEL": "stderr",
     "CACHE_STORE": "array",
     "SESSION_DRIVER": "cookie",
-    "DB_CONNECTION": "sqlite",
-    "DB_DATABASE": "/tmp/database.sqlite"
+    "DB_CONNECTION": "pgsql",
+    "DB_HOST": "aws-0-ap-southeast-2.pooler.supabase.com",
+    "DB_PORT": "5432",
+    "DB_DATABASE": "postgres",
+    "DB_USERNAME": "postgres.tnkhcgwyobggmrhrcwfs",
+    "DB_PASSWORD": "Wahyudi123@",
+    "DB_SSLMODE": "require"
   }
 }
