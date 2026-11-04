@@ -343,6 +343,11 @@
                                         <span class="text-[10px] font-medium px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">
                                             {{ $product->category }}
                                         </span>
+                                        @if(!$product->is_available)
+                                            <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-rose-50 text-rose-600 border border-rose-200/60">
+                                                Habis
+                                            </span>
+                                        @endif
                                     </div>
                                     <p class="text-xs font-bold text-emerald-600 mt-0.5">{{ $product->formatted_price }}</p>
                                     @if($product->description)
@@ -351,16 +356,38 @@
                                 </div>
                             </div>
 
-                            <!-- Actions -->
-                            <form action="{{ route('stores.products.destroy', [$store->slug, $product->id]) }}" method="POST" onsubmit="return confirm('Hapus menu ini?')">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="p-2 rounded-xl text-rose-500 hover:bg-rose-50 hover:text-rose-600 transition-all" title="Hapus Menu">
+                            <!-- Actions (Edit & Delete) -->
+                            <div class="flex items-center gap-1 shrink-0">
+                                <button 
+                                    type="button" 
+                                    onclick="openEditProductModal({{ json_encode([
+                                        'id' => $product->id,
+                                        'name' => $product->name,
+                                        'category' => $product->category,
+                                        'price' => $product->price,
+                                        'description' => $product->description,
+                                        'is_available' => (bool)$product->is_available,
+                                        'image_url' => $product->image_url_formatted,
+                                        'update_url' => route('stores.products.update', [$store->slug, $product->id]),
+                                    ]) }})" 
+                                    class="p-2 rounded-xl text-slate-500 hover:bg-slate-100 hover:text-slate-800 transition-all cursor-pointer" 
+                                    title="Edit Menu Ini"
+                                >
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
                                     </svg>
                                 </button>
-                            </form>
+
+                                <form action="{{ route('stores.products.destroy', [$store->slug, $product->id]) }}" method="POST" onsubmit="return confirm('Hapus menu \'{{ addslashes($product->name) }}\'?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="p-2 rounded-xl text-rose-500 hover:bg-rose-50 hover:text-rose-600 transition-all cursor-pointer" title="Hapus Menu">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                        </svg>
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     @empty
                         <div class="text-center py-8 text-xs text-slate-400">
@@ -424,6 +451,80 @@
             </div>
         </div>
 
+    </div>
+</div>
+
+<!-- Edit Product Modal -->
+<div id="edit-product-modal" class="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl relative">
+        <div class="flex items-center justify-between p-5 border-b border-slate-100">
+            <div>
+                <h3 class="text-sm font-bold text-slate-900">Edit Menu Produk</h3>
+                <p class="text-[11px] text-slate-400">Perbarui rincian, harga, atau ketersediaan menu</p>
+            </div>
+            <button type="button" onclick="closeEditProductModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+
+        <form id="edit-product-form" action="" method="POST" enctype="multipart/form-data" class="p-5 space-y-4">
+            @csrf
+            @method('PUT')
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                    <label class="block text-[11px] font-semibold text-slate-600 mb-1">Nama Menu</label>
+                    <input type="text" name="name" id="edit-product-name" required class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs bg-white focus:outline-none focus:border-emerald-500">
+                </div>
+                <div>
+                    <label class="block text-[11px] font-semibold text-slate-600 mb-1">Kategori</label>
+                    <input type="text" name="category" id="edit-product-category" required class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs bg-white focus:outline-none focus:border-emerald-500">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                    <label class="block text-[11px] font-semibold text-slate-600 mb-1">Harga (Rp)</label>
+                    <input type="number" name="price" id="edit-product-price" required min="0" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs bg-white focus:outline-none focus:border-emerald-500">
+                </div>
+                <div class="flex items-center pt-4 sm:pt-5">
+                    <label class="relative flex items-center gap-2 cursor-pointer select-none">
+                        <input type="checkbox" name="is_available" id="edit-product-available" value="1" class="w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500">
+                        <span class="text-xs font-semibold text-slate-700">Tersedia untuk Dipesan</span>
+                    </label>
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-[11px] font-semibold text-slate-600 mb-1">Deskripsi Singkat</label>
+                <textarea name="description" id="edit-product-desc" rows="2" placeholder="Komposisi atau keunggulan menu..." class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs bg-white focus:outline-none focus:border-emerald-500"></textarea>
+            </div>
+
+            <div>
+                <label class="block text-[11px] font-semibold text-slate-600 mb-1">Ganti Foto Menu (Opsional)</label>
+                <div class="flex items-center gap-3">
+                    <div id="edit-product-img-box" class="w-12 h-12 rounded-xl bg-slate-100 border border-slate-200 overflow-hidden shrink-0 flex items-center justify-center">
+                        <img id="edit-product-img-preview" src="" class="w-full h-full object-cover hidden">
+                        <span id="edit-product-no-img" class="text-[10px] text-slate-400">No img</span>
+                    </div>
+                    <div class="flex-1">
+                        <input type="file" name="image" id="edit-product-image-input" accept="image/*" class="w-full text-xs text-slate-500 file:mr-2 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-[11px] file:font-bold file:bg-slate-100 file:text-slate-700 hover:file:bg-slate-200 cursor-pointer">
+                        <p class="text-[10px] text-slate-400 mt-0.5">Biarkan kosong jika tidak ingin mengubah foto.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-end gap-2 pt-2 border-t border-slate-100">
+                <button type="button" onclick="closeEditProductModal()" class="px-4 py-2 rounded-xl border border-slate-300 hover:bg-slate-50 text-slate-700 text-xs font-semibold transition-all cursor-pointer">
+                    Batal
+                </button>
+                <button type="submit" class="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition-all shadow-sm cursor-pointer">
+                    Simpan Perubahan
+                </button>
+            </div>
+        </form>
     </div>
 </div>
 
@@ -605,6 +706,53 @@
     }
 
     document.addEventListener('DOMContentLoaded', initOpeningHours);
+
+    function openEditProductModal(product) {
+        document.getElementById('edit-product-form').action = product.update_url;
+        document.getElementById('edit-product-name').value = product.name;
+        document.getElementById('edit-product-category').value = product.category;
+        document.getElementById('edit-product-price').value = product.price;
+        document.getElementById('edit-product-desc').value = product.description || '';
+        document.getElementById('edit-product-available').checked = Boolean(product.is_available);
+
+        const imgPreview = document.getElementById('edit-product-img-preview');
+        const noImgText = document.getElementById('edit-product-no-img');
+        if (product.image_url) {
+            imgPreview.src = product.image_url;
+            imgPreview.classList.remove('hidden');
+            noImgText.classList.add('hidden');
+        } else {
+            imgPreview.src = '';
+            imgPreview.classList.add('hidden');
+            noImgText.classList.remove('hidden');
+        }
+
+        document.getElementById('edit-product-image-input').value = '';
+        document.getElementById('edit-product-modal').classList.remove('hidden');
+    }
+
+    function closeEditProductModal() {
+        document.getElementById('edit-product-modal').classList.add('hidden');
+    }
+
+    document.getElementById('edit-product-modal')?.addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeEditProductModal();
+        }
+    });
+
+    document.getElementById('edit-product-image-input')?.addEventListener('change', function(e) {
+        if (e.target.files && e.target.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(ev) {
+                const imgPreview = document.getElementById('edit-product-img-preview');
+                imgPreview.src = ev.target.result;
+                imgPreview.classList.remove('hidden');
+                document.getElementById('edit-product-no-img').classList.add('hidden');
+            };
+            reader.readAsDataURL(e.target.files[0]);
+        }
+    });
 </script>
 @endpush
 @endsection
