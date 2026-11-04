@@ -18,7 +18,7 @@
         }
     </style>
 </head>
-<body class="bg-slate-100 min-h-screen py-10 px-4 flex flex-col items-center justify-center">
+<body class="bg-[#fbf9f5] min-h-screen py-10 px-4 flex flex-col items-center justify-center text-stone-800">
 
     <!-- Top Action Bar (hidden on print) -->
     <div class="no-print max-w-md w-full mb-6 flex items-center justify-between gap-3">

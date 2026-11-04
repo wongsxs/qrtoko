@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id" class="h-full bg-slate-100">
+<html lang="id" class="h-full bg-[#fbf9f5]">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -39,7 +39,7 @@
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
     </style>
 </head>
-<body class="min-h-full pb-16 text-slate-800 antialiased selection:bg-emerald-500 selection:text-white bg-slate-100/80">
+<body class="min-h-full pb-16 text-stone-800 antialiased selection:bg-amber-800 selection:text-white bg-[#fbf9f5]">
 
     <!-- Responsive Container: Mobile-friendly (full-width/max-md on small) to 2-Column on Tablet/Desktop (max-w-6xl) -->
     <div class="max-w-6xl mx-auto px-0 sm:px-4 md:px-6 lg:px-8 py-0 sm:py-6 md:py-8">
@@ -50,18 +50,18 @@
             <div class="w-full md:w-5/12 lg:w-4/12 md:sticky md:top-6 space-y-4">
                 
                 <!-- Main Profile Card -->
-                <div class="bg-white sm:rounded-3xl shadow-md sm:shadow-lg shadow-slate-200/60 overflow-hidden border-b sm:border border-slate-200/80">
+                <div class="bg-white sm:rounded-3xl shadow-sm sm:shadow-md shadow-stone-300/40 overflow-hidden border-b sm:border border-stone-200/90">
                     
                     <!-- Announcement Strip -->
                     @if($store->announcement)
-                        <div class="bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 text-white px-4 py-2.5 text-xs font-semibold flex items-center gap-2.5 shadow-sm">
+                        <div class="bg-gradient-to-r from-amber-700 via-stone-800 to-amber-800 text-amber-100 px-4 py-2.5 text-xs font-semibold flex items-center gap-2.5 shadow-sm border-b border-amber-500/20">
                             <img src="{{ asset('icons/retro/promo.png') }}" class="w-5 h-5 rounded-md object-contain shrink-0 drop-shadow-xs" alt="Promo Toko">
                             <span class="truncate leading-tight font-medium">{{ $store->announcement }}</span>
                         </div>
                     @endif
 
                     <!-- Store Banner / Header -->
-                    <div class="relative bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 text-white p-5 sm:p-6 pt-7 sm:pt-8 pb-8 rounded-b-3xl shadow-inner">
+                    <div class="relative bg-gradient-to-b from-stone-900 via-stone-900 to-[#142823] text-white p-5 sm:p-6 pt-7 sm:pt-8 pb-8 rounded-b-3xl shadow-md border-b border-stone-800">
                         
                         <!-- Top Bar: Status Badge & Owner Links -->
                         <div class="flex items-center justify-between mb-4">
@@ -76,7 +76,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
                                     </svg>
                                 </a>
-                                <button type="button" onclick="openQrModal()" class="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all backdrop-blur-sm" title="Tampilkan QR Code">
+                                <button type="button" onclick="openQrModal()" class="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all backdrop-blur-sm cursor-pointer" title="Tampilkan QR Code">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/>
                                     </svg>
@@ -94,99 +94,99 @@
 
                         <!-- Store Logo & Identity -->
                         <div class="flex items-center gap-3.5 sm:gap-4">
-                            <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white flex items-center justify-center shadow-lg shrink-0 border-2 border-white/60 overflow-hidden">
+                            <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-[#faf7f2] flex items-center justify-center shadow-lg shrink-0 border-2 border-stone-700 overflow-hidden">
                                 @if($store->logo_url)
                                     <img src="{{ $store->logo_url }}" alt="{{ $store->name }}" class="w-full h-full object-cover">
                                 @else
-                                    <span class="text-emerald-700 font-black text-2xl sm:text-3xl">{{ strtoupper(substr($store->name, 0, 1)) }}</span>
+                                    <span class="text-stone-900 font-black text-2xl sm:text-3xl">{{ strtoupper(substr($store->name, 0, 1)) }}</span>
                                 @endif
                             </div>
                             <div class="min-w-0 flex-1">
                                 <h1 class="text-xl sm:text-2xl font-black tracking-tight text-white leading-tight truncate">{{ $store->name }}</h1>
-                                <p class="text-xs text-emerald-200 font-semibold mt-0.5">{{ $store->category }}</p>
+                                <p class="text-xs text-amber-200/90 font-semibold mt-0.5">{{ $store->category }}</p>
                                 @if($store->tagline)
-                                    <p class="text-xs text-slate-200 mt-1 line-clamp-1 italic">"{{ $store->tagline }}"</p>
+                                    <p class="text-xs text-stone-300 mt-1 line-clamp-1 italic">"{{ $store->tagline }}"</p>
                                 @endif
                             </div>
                         </div>
 
-                        <!-- Quick Action Buttons -->
+                        <!-- Quick Action Buttons: Warm Cream Plate with Vintage Badges -->
                         <div class="grid {{ $store->instagram ? 'grid-cols-4' : 'grid-cols-3' }} gap-2 mt-5">
                             <!-- WhatsApp Direct -->
-                            <a href="https://wa.me/{{ $store->formatted_phone }}?text=Halo%20{{ urlencode($store->name) }},%20saya%20ingin%20tanya-tanya" target="_blank" class="group flex flex-col items-center justify-center py-2 px-1 rounded-2xl bg-white/10 hover:bg-emerald-500/30 border border-white/15 text-white transition-all text-center shadow-xs">
-                                <img src="{{ asset('icons/retro/whatsapp.png') }}" class="w-8 h-8 rounded-xl object-contain drop-shadow-md group-hover:scale-110 transition-transform mb-1" alt="WhatsApp">
-                                <span class="text-[10px] sm:text-[11px] font-bold text-white tracking-tight">WhatsApp</span>
+                            <a href="https://wa.me/{{ $store->formatted_phone }}?text=Halo%20{{ urlencode($store->name) }},%20saya%20ingin%20tanya-tanya" target="_blank" class="group flex flex-col items-center justify-center py-2.5 px-1 rounded-2xl bg-[#faf7f2] hover:bg-white text-stone-900 border border-stone-300/80 hover:border-amber-600/50 shadow-sm hover:shadow-md transition-all text-center">
+                                <img src="{{ asset('icons/retro/whatsapp.png') }}" class="w-8 h-8 sm:w-9 sm:h-9 object-contain drop-shadow-xs group-hover:scale-105 transition-transform mb-1" alt="WhatsApp">
+                                <span class="text-[10px] sm:text-[11px] font-bold text-stone-800 tracking-tight">WhatsApp</span>
                             </a>
 
                             <!-- Google Maps -->
                             @if($store->maps_url)
-                                <a href="{{ $store->maps_url }}" target="_blank" class="group flex flex-col items-center justify-center py-2 px-1 rounded-2xl bg-white/10 hover:bg-sky-500/30 border border-white/15 text-white transition-all text-center shadow-xs">
-                                    <img src="{{ asset('icons/retro/lokasi.png') }}" class="w-8 h-8 rounded-xl object-contain drop-shadow-md group-hover:scale-110 transition-transform mb-1" alt="Lokasi">
-                                    <span class="text-[10px] sm:text-[11px] font-bold text-white tracking-tight">Lokasi</span>
+                                <a href="{{ $store->maps_url }}" target="_blank" class="group flex flex-col items-center justify-center py-2.5 px-1 rounded-2xl bg-[#faf7f2] hover:bg-white text-stone-900 border border-stone-300/80 hover:border-amber-600/50 shadow-sm hover:shadow-md transition-all text-center">
+                                    <img src="{{ asset('icons/retro/lokasi.png') }}" class="w-8 h-8 sm:w-9 sm:h-9 object-contain drop-shadow-xs group-hover:scale-105 transition-transform mb-1" alt="Lokasi">
+                                    <span class="text-[10px] sm:text-[11px] font-bold text-stone-800 tracking-tight">Lokasi</span>
                                 </a>
                             @else
-                                <div class="flex flex-col items-center justify-center py-2 px-1 rounded-2xl bg-white/5 border border-white/5 text-slate-400 text-center opacity-50">
-                                    <img src="{{ asset('icons/retro/lokasi.png') }}" class="w-8 h-8 rounded-xl object-contain grayscale opacity-60 mb-1" alt="Lokasi">
-                                    <span class="text-[10px] sm:text-[11px] font-semibold text-slate-400">Lokasi</span>
+                                <div class="flex flex-col items-center justify-center py-2.5 px-1 rounded-2xl bg-[#faf7f2]/50 border border-stone-300/40 text-stone-400 text-center opacity-50">
+                                    <img src="{{ asset('icons/retro/lokasi.png') }}" class="w-8 h-8 sm:w-9 sm:h-9 object-contain grayscale opacity-50 mb-1" alt="Lokasi">
+                                    <span class="text-[10px] sm:text-[11px] font-semibold text-stone-400">Lokasi</span>
                                 </div>
                             @endif
 
                             <!-- Instagram (if provided) -->
                             @if($store->instagram)
-                                <a href="https://instagram.com/{{ ltrim($store->instagram, '@') }}" target="_blank" class="group flex flex-col items-center justify-center py-2 px-1 rounded-2xl bg-white/10 hover:bg-pink-500/30 border border-white/15 text-white transition-all text-center shadow-xs">
-                                    <img src="{{ asset('icons/retro/instagram.png') }}" class="w-8 h-8 rounded-xl object-contain drop-shadow-md group-hover:scale-110 transition-transform mb-1" alt="Instagram">
-                                    <span class="text-[10px] sm:text-[11px] font-bold text-white tracking-tight">Instagram</span>
+                                <a href="https://instagram.com/{{ ltrim($store->instagram, '@') }}" target="_blank" class="group flex flex-col items-center justify-center py-2.5 px-1 rounded-2xl bg-[#faf7f2] hover:bg-white text-stone-900 border border-stone-300/80 hover:border-amber-600/50 shadow-sm hover:shadow-md transition-all text-center">
+                                    <img src="{{ asset('icons/retro/instagram.png') }}" class="w-8 h-8 sm:w-9 sm:h-9 object-contain drop-shadow-xs group-hover:scale-105 transition-transform mb-1" alt="Instagram">
+                                    <span class="text-[10px] sm:text-[11px] font-bold text-stone-800 tracking-tight">Instagram</span>
                                 </a>
                             @endif
 
                             <!-- Bagi QR Modal Button -->
-                            <button type="button" onclick="openQrModal()" class="group flex flex-col items-center justify-center py-2 px-1 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/15 text-white transition-all text-center shadow-xs">
-                                <img src="{{ asset('icons/retro/qr-scan.png') }}" class="w-8 h-8 rounded-xl object-contain drop-shadow-md group-hover:scale-110 transition-transform mb-1" alt="QR Code">
-                                <span class="text-[10px] sm:text-[11px] font-bold text-white tracking-tight">Bagi QR</span>
+                            <button type="button" onclick="openQrModal()" class="group flex flex-col items-center justify-center py-2.5 px-1 rounded-2xl bg-[#faf7f2] hover:bg-white text-stone-900 border border-stone-300/80 hover:border-amber-600/50 shadow-sm hover:shadow-md transition-all text-center cursor-pointer">
+                                <img src="{{ asset('icons/retro/qr-scan.png') }}" class="w-8 h-8 sm:w-9 sm:h-9 object-contain drop-shadow-xs group-hover:scale-105 transition-transform mb-1" alt="QR Code">
+                                <span class="text-[10px] sm:text-[11px] font-bold text-stone-800 tracking-tight">Bagi QR</span>
                             </button>
                         </div>
 
                     </div>
 
                     <!-- Store Info Details -->
-                    <div class="p-5 space-y-3 text-xs text-slate-600 bg-white">
+                    <div class="p-5 space-y-3 text-xs text-stone-600 bg-white">
                         @if($store->opening_hours)
-                            <div class="flex items-start gap-2.5">
-                                <img src="{{ asset('icons/retro/jam-operasional.png') }}" class="w-5 h-5 rounded-md object-contain shrink-0 mt-0.5" alt="Jam Operasional">
+                            <div class="flex items-start gap-3 p-2.5 rounded-2xl bg-[#faf7f2] border border-stone-200/80">
+                                <img src="{{ asset('icons/retro/jam-operasional.png') }}" class="w-6 h-6 rounded-md object-contain shrink-0 mt-0.5" alt="Jam Operasional">
                                 <div>
-                                    <strong class="text-slate-900 block font-semibold">Jam Operasional:</strong>
-                                    <span>{{ $store->opening_hours }}</span>
+                                    <strong class="text-stone-900 block font-bold text-[11px] uppercase tracking-wider">Jam Operasional</strong>
+                                    <span class="text-stone-700 text-xs">{{ $store->opening_hours }}</span>
                                 </div>
                             </div>
                         @endif
 
                         @if($store->address)
-                            <div class="flex items-start gap-2.5">
-                                <img src="{{ asset('icons/retro/lokasi.png') }}" class="w-5 h-5 rounded-md object-contain shrink-0 mt-0.5" alt="Alamat Toko">
+                            <div class="flex items-start gap-3 p-2.5 rounded-2xl bg-[#faf7f2] border border-stone-200/80">
+                                <img src="{{ asset('icons/retro/lokasi.png') }}" class="w-6 h-6 rounded-md object-contain shrink-0 mt-0.5" alt="Alamat Toko">
                                 <div>
-                                    <strong class="text-slate-900 block font-semibold">Alamat Toko:</strong>
-                                    <span class="leading-relaxed">{{ $store->address }}</span>
+                                    <strong class="text-stone-900 block font-bold text-[11px] uppercase tracking-wider">Alamat Toko</strong>
+                                    <span class="leading-relaxed text-stone-700 text-xs">{{ $store->address }}</span>
                                 </div>
                             </div>
                         @endif
 
                         @if($store->description)
-                            <div class="pt-3 border-t border-slate-100 space-y-1">
-                                <div class="flex items-center gap-1.5 text-slate-700">
+                            <div class="pt-3 border-t border-stone-100 space-y-1">
+                                <div class="flex items-center gap-1.5 text-stone-800">
                                     <img src="{{ asset('icons/retro/tentang.png') }}" class="w-4 h-4 rounded-xs object-contain shrink-0" alt="Tentang Toko">
-                                    <strong class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Tentang Toko</strong>
+                                    <strong class="text-[10px] font-bold uppercase tracking-wider text-stone-500">Tentang Toko</strong>
                                 </div>
-                                <p class="text-slate-600 leading-relaxed text-xs">
+                                <p class="text-stone-600 leading-relaxed text-xs">
                                     {{ $store->description }}
                                 </p>
                             </div>
                         @endif
 
                         @if(!empty($store->facilities))
-                            <div class="pt-3 border-t border-slate-100 space-y-2">
+                            <div class="pt-3 border-t border-stone-100 space-y-2">
                                 <div class="flex items-center gap-1.5">
                                     <img src="{{ asset('icons/retro/fasilitas.png') }}" class="w-4 h-4 rounded-xs object-contain shrink-0" alt="Fasilitas">
-                                    <strong class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Fasilitas & Layanan</strong>
+                                    <strong class="text-[10px] font-bold uppercase tracking-wider text-stone-500">Fasilitas & Layanan</strong>
                                 </div>
                                 <div class="flex flex-wrap gap-1.5">
                                     @foreach($store->facilities as $fac)
@@ -194,7 +194,7 @@
                                             $cleanFac = trim(preg_replace('/[\x{1F600}-\x{1F64F}\x{1F300}-\x{1F5FF}\x{1F680}-\x{1F6FF}\x{1F1E0}-\x{1F1FF}\x{2600}-\x{26FF}\x{2700}-\x{27BF}\x{1F900}-\x{1F9FF}\x{1F018}-\x{1F0F5}\x{1F200}-\x{1F270}\x{2300}-\x{23FF}\x{2B50}\x{200D}]/u', '', $fac));
                                             $facLower = strtolower($fac);
                                         @endphp
-                                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 text-[11px] font-semibold border border-slate-200/80 transition-colors">
+                                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-[#faf7f2] hover:bg-[#f3ede3] text-stone-800 text-[11px] font-semibold border border-stone-200 transition-colors">
                                             @if(str_contains($facLower, 'wifi') || str_contains($facLower, 'wi-fi'))
                                                 <img src="{{ asset('icons/retro/wifi.png') }}" class="w-4 h-4 rounded-xs object-contain shrink-0" alt="WiFi">
                                             @elseif(str_contains($facLower, 'parkir') || str_contains($facLower, 'mobil') || str_contains($facLower, 'motor'))
@@ -202,23 +202,23 @@
                                             @elseif(str_contains($facLower, 'qris') || str_contains($facLower, 'bayar') || str_contains($facLower, 'kartu'))
                                                 <img src="{{ asset('icons/retro/qr-scan.png') }}" class="w-4 h-4 rounded-xs object-contain shrink-0" alt="QRIS">
                                             @elseif(str_contains($facLower, 'delivery') || str_contains($facLower, 'kirim') || str_contains($facLower, 'antar'))
-                                                <svg class="w-3.5 h-3.5 text-amber-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <svg class="w-3.5 h-3.5 text-amber-700 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/>
                                                 </svg>
                                             @elseif(str_contains($facLower, 'ac') || str_contains($facLower, 'dingin') || str_contains($facLower, 'udara'))
-                                                <svg class="w-3.5 h-3.5 text-teal-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <svg class="w-3.5 h-3.5 text-teal-700 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                                                 </svg>
                                             @elseif(str_contains($facLower, 'musholla') || str_contains($facLower, 'sholat') || str_contains($facLower, 'ibadah'))
-                                                <svg class="w-3.5 h-3.5 text-emerald-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <svg class="w-3.5 h-3.5 text-emerald-700 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
                                                 </svg>
                                             @elseif(str_contains($facLower, 'colokan') || str_contains($facLower, 'listrik') || str_contains($facLower, 'stopkontak'))
-                                                <svg class="w-3.5 h-3.5 text-amber-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <svg class="w-3.5 h-3.5 text-amber-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                                                 </svg>
                                             @elseif(str_contains($facLower, 'merokok') || str_contains($facLower, 'smoking') || str_contains($facLower, 'rokok'))
-                                                <svg class="w-3.5 h-3.5 text-slate-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <svg class="w-3.5 h-3.5 text-stone-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/>
                                                 </svg>
                                             @else
@@ -235,13 +235,13 @@
                 </div>
 
                 <!-- Desktop / Tablet QR Box helper (Hidden on small mobile screens, visible on md+) -->
-                <div class="hidden md:block bg-white rounded-3xl p-5 border border-slate-200/80 shadow-sm text-center space-y-3">
-                    <div class="inline-flex items-center gap-2 text-xs font-bold text-slate-700">
+                <div class="hidden md:block bg-white rounded-3xl p-5 border border-stone-200/90 shadow-sm text-center space-y-3">
+                    <div class="inline-flex items-center gap-2 text-xs font-bold text-stone-700">
                         <img src="{{ asset('icons/retro/qr-scan.png') }}" class="w-5 h-5 rounded-md object-contain shrink-0" alt="QR Scan">
                         <span>Buka Menu di Ponsel</span>
                     </div>
-                    <div id="desktop-qrcode" class="flex justify-center p-3 bg-slate-50 rounded-2xl border border-slate-100"></div>
-                    <p class="text-[11px] text-slate-400">Scan QR Code di atas menggunakan kamera HP untuk membuka menu ini.</p>
+                    <div id="desktop-qrcode" class="flex justify-center p-3 bg-[#faf7f2] rounded-2xl border border-stone-200/80"></div>
+                    <p class="text-[11px] text-stone-400">Scan QR Code di atas menggunakan kamera HP untuk membuka menu ini.</p>
                 </div>
 
             </div>
@@ -250,12 +250,12 @@
             <div class="w-full md:w-7/12 lg:w-8/12 px-4 sm:px-0 space-y-5">
                 
                 <div class="space-y-3">
-                    <div class="flex items-center justify-between pb-2 border-b border-slate-200">
-                        <h2 class="text-base sm:text-lg font-black tracking-tight text-slate-900 flex items-center gap-2">
-                            <img src="{{ asset('icons/retro/menu.png') }}" class="w-6 h-6 rounded-lg object-contain shrink-0" alt="Menu">
+                    <div class="flex items-center justify-between pb-2 border-b border-stone-300/80">
+                        <h2 class="text-base sm:text-lg font-black tracking-tight text-stone-900 flex items-center gap-2">
+                            <img src="{{ asset('icons/retro/menu.png') }}" class="w-7 h-7 rounded-lg object-contain shrink-0" alt="Menu">
                             <span>Daftar Menu & Harga</span>
                         </h2>
-                        <span class="text-xs font-bold px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/60 shadow-2xs">
+                        <span class="text-xs font-bold px-3 py-1 rounded-full bg-[#f4efe8] text-stone-800 border border-stone-300 shadow-2xs">
                             <span id="product-count-badge">{{ $products->flatten()->count() }}</span> Pilihan
                         </span>
                     </div>
@@ -263,7 +263,7 @@
                     @if($products->isNotEmpty())
                         <!-- Live Search Input -->
                         <div class="relative">
-                            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-stone-400">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                                 </svg>
@@ -272,13 +272,13 @@
                                 type="text" 
                                 id="menu-search-input" 
                                 placeholder="Cari nama menu, minuman, camilan..." 
-                                class="w-full pl-10 pr-9 py-2.5 rounded-2xl bg-white border border-slate-200 text-xs sm:text-sm text-slate-800 placeholder-slate-400 shadow-2xs focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all"
+                                class="w-full pl-10 pr-9 py-2.5 rounded-2xl bg-white border border-stone-300/80 text-xs sm:text-sm text-stone-800 placeholder-stone-400 shadow-2xs focus:outline-none focus:ring-2 focus:ring-amber-900/10 focus:border-amber-700 transition-all"
                             >
                             <button 
                                 type="button" 
                                 id="menu-search-clear" 
                                 onclick="clearMenuSearch()" 
-                                class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-300 hover:text-slate-600 hidden transition-colors"
+                                class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-stone-300 hover:text-stone-600 hidden transition-colors"
                             >
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
@@ -287,12 +287,12 @@
                         </div>
 
                         <!-- Sticky Category Pills Bar -->
-                        <div class="sticky top-0 z-20 -mx-4 px-4 sm:mx-0 sm:px-0 py-2 bg-slate-100/95 backdrop-blur-md">
+                        <div class="sticky top-0 z-20 -mx-4 px-4 sm:mx-0 sm:px-0 py-2 bg-[#fbf9f5]/95 backdrop-blur-md">
                             <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar scroll-smooth">
                                 <button 
                                     type="button" 
                                     onclick="filterByCategory('all', this)" 
-                                    class="category-pill active whitespace-nowrap px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 bg-slate-900 text-white shadow-xs"
+                                    class="category-pill active whitespace-nowrap px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 bg-stone-900 text-amber-50 shadow-xs"
                                 >
                                     Semua ({{ $products->flatten()->count() }})
                                 </button>
@@ -300,7 +300,7 @@
                                     <button 
                                         type="button" 
                                         onclick="filterByCategory('{{ Str::slug($category) }}', this)" 
-                                        class="category-pill whitespace-nowrap px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all shrink-0 bg-white hover:bg-slate-50 text-slate-600 border border-slate-200/80 shadow-2xs hover:text-slate-900"
+                                        class="category-pill whitespace-nowrap px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all shrink-0 bg-white hover:bg-[#faf7f2] text-stone-700 border border-stone-200/90 shadow-2xs hover:text-stone-900"
                                     >
                                         {{ $category }} ({{ $items->count() }})
                                     </button>
@@ -311,32 +311,32 @@
                 </div>
 
                 @if($products->isEmpty())
-                    <div class="text-center py-16 px-4 bg-white rounded-3xl border border-dashed border-slate-300 space-y-3">
-                        <div class="w-12 h-12 mx-auto rounded-2xl bg-slate-100 flex items-center justify-center text-slate-400">
+                    <div class="text-center py-16 px-4 bg-white rounded-3xl border border-dashed border-stone-300 space-y-3">
+                        <div class="w-12 h-12 mx-auto rounded-2xl bg-[#faf7f2] flex items-center justify-center text-stone-400">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
                             </svg>
                         </div>
-                        <p class="text-xs text-slate-500 font-medium">Daftar menu untuk toko ini sedang disiapkan.</p>
+                        <p class="text-xs text-stone-500 font-medium">Daftar menu untuk toko ini sedang disiapkan.</p>
                         @if(Auth::check() && ($store->user_id === Auth::id() || $store->user_id === null))
-                            <a href="{{ route('stores.edit', $store->slug) }}" class="inline-block mt-2 px-4 py-2 rounded-xl bg-emerald-600 text-white text-xs font-bold shadow-sm">
+                            <a href="{{ route('stores.edit', $store->slug) }}" class="inline-block mt-2 px-4 py-2 rounded-xl bg-stone-900 text-amber-50 text-xs font-bold shadow-sm">
                                 + Tambah Menu Sekarang
                             </a>
                         @endif
                     </div>
                 @else
                     <!-- No search results state (hidden by default) -->
-                    <div id="no-search-results" class="hidden text-center py-14 px-4 bg-white rounded-3xl border border-dashed border-slate-300 space-y-3">
-                        <div class="w-12 h-12 mx-auto rounded-2xl bg-slate-100 flex items-center justify-center text-slate-400">
+                    <div id="no-search-results" class="hidden text-center py-14 px-4 bg-white rounded-3xl border border-dashed border-stone-300 space-y-3">
+                        <div class="w-12 h-12 mx-auto rounded-2xl bg-[#faf7f2] flex items-center justify-center text-stone-400">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                             </svg>
                         </div>
                         <div>
-                            <p class="text-sm font-bold text-slate-800">Menu tidak ditemukan</p>
-                            <p class="text-xs text-slate-500 mt-0.5">Coba gunakan kata kunci pencarian menu lainnya.</p>
+                            <p class="text-sm font-bold text-stone-800">Menu tidak ditemukan</p>
+                            <p class="text-xs text-stone-500 mt-0.5">Coba gunakan kata kunci pencarian menu lainnya.</p>
                         </div>
-                        <button type="button" onclick="clearMenuSearch()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-all">
+                        <button type="button" onclick="clearMenuSearch()" class="px-4 py-2 rounded-xl bg-[#faf7f2] hover:bg-[#f3ede3] text-stone-700 text-xs font-semibold transition-all">
                             Tampilkan Semua Menu
                         </button>
                     </div>
@@ -346,17 +346,17 @@
                         @foreach($products as $category => $items)
                             <div class="category-section space-y-3" data-category-slug="{{ Str::slug($category) }}">
                                 <div class="flex items-center gap-2">
-                                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                                    <h3 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-600">{{ $category }}</h3>
-                                    <span class="text-[11px] font-semibold text-slate-400">({{ $items->count() }})</span>
-                                    <span class="h-px bg-slate-200 flex-1 ml-2"></span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-[#1b4332]"></span>
+                                    <h3 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-stone-700">{{ $category }}</h3>
+                                    <span class="text-[11px] font-semibold text-stone-400">({{ $items->count() }})</span>
+                                    <span class="h-px bg-stone-200/90 flex-1 ml-2"></span>
                                 </div>
 
                                 <!-- Responsive Grid: 1 col on small phones, 2 cols on tablets & laptops -->
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                                     @foreach($items as $product)
                                         <div 
-                                            class="menu-card group relative bg-white rounded-2xl sm:rounded-3xl p-3.5 sm:p-4 border border-slate-200/90 hover:border-emerald-400 hover:shadow-md transition-all cursor-pointer flex flex-col justify-between"
+                                            class="menu-card group relative bg-white rounded-2xl sm:rounded-3xl p-3.5 sm:p-4 border border-stone-200/90 hover:border-amber-700/60 hover:shadow-md shadow-stone-200/40 transition-all cursor-pointer flex flex-col justify-between"
                                             data-name="{{ strtolower($product->name) }}"
                                             data-desc="{{ strtolower($product->description ?? '') }}"
                                             data-category="{{ Str::slug($category) }}"
@@ -365,7 +365,7 @@
                                         >
                                             <div class="flex items-start gap-3 sm:gap-3.5">
                                                 @if($product->image_url_formatted)
-                                                    <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-slate-100 overflow-hidden shrink-0 border border-slate-200/80 shadow-2xs relative">
+                                                    <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-stone-100 overflow-hidden shrink-0 border border-stone-200/80 shadow-2xs relative">
                                                         <img src="{{ $product->image_url_formatted }}" alt="{{ $product->name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                                                     </div>
                                                 @else
@@ -376,26 +376,26 @@
 
                                                 <div class="flex-1 min-w-0">
                                                     <div class="flex items-start justify-between gap-2">
-                                                        <h4 class="text-sm font-bold text-slate-900 group-hover:text-emerald-700 transition-colors leading-snug line-clamp-1">
+                                                        <h4 class="text-sm font-bold text-stone-900 group-hover:text-amber-900 transition-colors leading-snug line-clamp-1">
                                                             {{ $product->name }}
                                                         </h4>
-                                                        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/60 shrink-0">
+                                                        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-[#f4efe8] text-stone-700 border border-stone-200 shrink-0">
                                                             Tersedia
                                                         </span>
                                                     </div>
                                                     @if($product->description)
-                                                        <p class="text-[11px] text-slate-500 mt-1 line-clamp-2 leading-relaxed">
+                                                        <p class="text-[11px] text-stone-500 mt-1 line-clamp-2 leading-relaxed">
                                                             {{ $product->description }}
                                                         </p>
                                                     @endif
                                                 </div>
                                             </div>
 
-                                            <div class="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between">
-                                                <span class="text-sm sm:text-base font-black text-emerald-600 tracking-tight">
+                                            <div class="mt-3 pt-2.5 border-t border-stone-100 flex items-center justify-between">
+                                                <span class="text-sm sm:text-base font-black text-[#1b4332] tracking-tight">
                                                     {{ $product->formatted_price }}
                                                 </span>
-                                                <span class="text-[11px] font-semibold text-slate-400 group-hover:text-emerald-600 transition-colors inline-flex items-center gap-1">
+                                                <span class="text-[11px] font-semibold text-stone-400 group-hover:text-amber-800 transition-colors inline-flex items-center gap-1">
                                                     <span>Lihat detail</span>
                                                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
@@ -488,20 +488,20 @@
             <div class="p-5 sm:p-6 space-y-4">
                 <div>
                     <div class="flex items-center gap-2 mb-1.5">
-                        <span id="modal-product-category" class="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 uppercase tracking-wider"></span>
-                        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/60">Tersedia</span>
+                        <span id="modal-product-category" class="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-[#f4efe8] text-stone-700 uppercase tracking-wider"></span>
+                        <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-[#f4efe8] text-stone-700 border border-stone-200">Tersedia</span>
                     </div>
-                    <h3 id="modal-product-name" class="text-lg sm:text-xl font-black text-slate-900 leading-tight"></h3>
-                    <p id="modal-product-price" class="text-base sm:text-lg font-black text-emerald-600 mt-2"></p>
+                    <h3 id="modal-product-name" class="text-lg sm:text-xl font-black text-stone-900 leading-tight"></h3>
+                    <p id="modal-product-price" class="text-base sm:text-lg font-black text-[#1b4332] mt-2"></p>
                 </div>
 
-                <div class="pt-3 border-t border-slate-100 space-y-1">
-                    <h4 class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Keterangan Menu:</h4>
-                    <p id="modal-product-desc" class="text-xs sm:text-sm text-slate-600 leading-relaxed"></p>
+                <div class="pt-3 border-t border-stone-100 space-y-1">
+                    <h4 class="text-[10px] font-bold uppercase tracking-wider text-stone-400">Keterangan Menu:</h4>
+                    <p id="modal-product-desc" class="text-xs sm:text-sm text-stone-600 leading-relaxed"></p>
                 </div>
 
                 <div class="pt-2">
-                    <button type="button" onclick="closeProductModal()" class="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition-all shadow-sm">
+                    <button type="button" onclick="closeProductModal()" class="w-full py-2.5 rounded-xl bg-stone-900 hover:bg-stone-800 text-amber-50 text-xs font-bold transition-all shadow-sm cursor-pointer">
                         Tutup
                     </button>
                 </div>
@@ -522,8 +522,8 @@
                     text: storeUrl,
                     width: 180,
                     height: 180,
-                    colorDark : "#0f172a",
-                    colorLight : "#ffffff",
+                    colorDark : "#1c1917",
+                    colorLight : "#faf7f2",
                     correctLevel : QRCode.CorrectLevel.H
                 });
                 qrGenerated = true;
@@ -547,8 +547,8 @@
                 text: storeUrl,
                 width: 140,
                 height: 140,
-                colorDark : "#0f172a",
-                colorLight : "#ffffff",
+                colorDark : "#1c1917",
+                colorLight : "#faf7f2",
                 correctLevel : QRCode.CorrectLevel.H
             });
         }
@@ -560,12 +560,12 @@
             currentCategory = slug;
 
             document.querySelectorAll('.category-pill').forEach(btn => {
-                btn.classList.remove('active', 'bg-slate-900', 'text-white', 'shadow-xs');
-                btn.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200/80');
+                btn.classList.remove('active', 'bg-stone-900', 'text-amber-50', 'shadow-xs');
+                btn.classList.add('bg-white', 'text-stone-700', 'border', 'border-stone-200/90');
             });
 
-            button.classList.add('active', 'bg-slate-900', 'text-white', 'shadow-xs');
-            button.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200/80');
+            button.classList.add('active', 'bg-stone-900', 'text-amber-50', 'shadow-xs');
+            button.classList.remove('bg-white', 'text-stone-700', 'border', 'border-stone-200/90');
 
             applyMenuFilters();
         }
