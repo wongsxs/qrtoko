@@ -118,19 +118,19 @@
                         <div class="grid grid-cols-3 gap-2 sm:gap-2.5 mt-5">
                             <!-- 1. WhatsApp Direct -->
                             <a href="https://wa.me/{{ $store->formatted_phone }}?text=Halo%20{{ urlencode($store->name) }},%20saya%20ingin%20tanya-tanya" target="_blank" class="group flex flex-col items-center justify-center py-2.5 px-1 rounded-xl bg-[#faf7f2] hover:bg-white text-stone-900 border border-[#e2d9cb] hover:border-[#b47b2b] shadow-2xs hover:shadow-xs transition-all text-center">
-                                <img src="{{ asset('icons/retro/whatsapp.png') }}" class="w-8 h-8 object-contain mb-1 drop-shadow-2xs group-hover:scale-105 transition-transform" alt="WhatsApp">
+                                <img src="{{ asset('icons/retro/whatsapp.png') }}" class="w-7 h-7 object-contain mb-2 drop-shadow-2xs group-hover:scale-105 transition-transform" alt="WhatsApp">
                                 <span class="text-xs font-bold text-stone-900">WhatsApp</span>
                             </a>
 
                             <!-- 2. Google Maps -->
                             @if($store->maps_url)
                                 <a href="{{ $store->maps_url }}" target="_blank" class="group flex flex-col items-center justify-center py-2.5 px-1 rounded-xl bg-[#faf7f2] hover:bg-white text-stone-900 border border-[#e2d9cb] hover:border-[#b47b2b] shadow-2xs hover:shadow-xs transition-all text-center">
-                                    <img src="{{ asset('icons/retro/lokasi.png') }}" class="w-8 h-8 object-contain mb-1 drop-shadow-2xs group-hover:scale-105 transition-transform" alt="Lokasi">
+                                    <img src="{{ asset('icons/retro/lokasi.png') }}" class="w-7 h-7 object-contain mb-2 drop-shadow-2xs group-hover:scale-105 transition-transform" alt="Lokasi">
                                     <span class="text-xs font-bold text-stone-900">Lokasi</span>
                                 </a>
                             @else
                                 <div class="flex flex-col items-center justify-center py-2.5 px-1 rounded-xl bg-[#faf7f2]/50 border border-stone-300/30 text-stone-400 text-center opacity-60">
-                                    <img src="{{ asset('icons/retro/lokasi.png') }}" class="w-8 h-8 object-contain mb-1 grayscale opacity-50" alt="Lokasi">
+                                    <img src="{{ asset('icons/retro/lokasi.png') }}" class="w-7 h-7 object-contain mb-2 grayscale opacity-50" alt="Lokasi">
                                     <span class="text-xs font-medium text-stone-400">Lokasi</span>
                                 </div>
                             @endif
@@ -138,17 +138,17 @@
                             <!-- 3. Instagram (or Telepon fallback) -->
                             @if($store->instagram)
                                 <a href="https://instagram.com/{{ ltrim($store->instagram, '@') }}" target="_blank" class="group flex flex-col items-center justify-center py-2.5 px-1 rounded-xl bg-[#faf7f2] hover:bg-white text-stone-900 border border-[#e2d9cb] hover:border-[#b47b2b] shadow-2xs hover:shadow-xs transition-all text-center">
-                                    <img src="{{ asset('icons/retro/instagram.png') }}" class="w-8 h-8 object-contain mb-1 drop-shadow-2xs group-hover:scale-105 transition-transform" alt="Instagram">
+                                    <img src="{{ asset('icons/retro/instagram.png') }}" class="w-7 h-7 object-contain mb-2 drop-shadow-2xs group-hover:scale-105 transition-transform" alt="Instagram">
                                     <span class="text-xs font-bold text-stone-900">Instagram</span>
                                 </a>
                             @elseif($store->phone)
                                 <a href="tel:{{ $store->formatted_phone }}" class="group flex flex-col items-center justify-center py-2.5 px-1 rounded-xl bg-[#faf7f2] hover:bg-white text-stone-900 border border-[#e2d9cb] hover:border-[#b47b2b] shadow-2xs hover:shadow-xs transition-all text-center">
-                                    <img src="{{ asset('icons/retro/telepon.png') }}" class="w-8 h-8 object-contain mb-1 drop-shadow-2xs group-hover:scale-105 transition-transform" alt="Telepon">
+                                    <img src="{{ asset('icons/retro/telepon.png') }}" class="w-7 h-7 object-contain mb-2 drop-shadow-2xs group-hover:scale-105 transition-transform" alt="Telepon">
                                     <span class="text-xs font-bold text-stone-900">Telepon</span>
                                 </a>
                             @else
                                 <div class="flex flex-col items-center justify-center py-2.5 px-1 rounded-xl bg-[#faf7f2]/50 border border-stone-300/30 text-stone-400 text-center opacity-60">
-                                    <img src="{{ asset('icons/retro/instagram.png') }}" class="w-8 h-8 object-contain mb-1 grayscale opacity-50" alt="Instagram">
+                                    <img src="{{ asset('icons/retro/instagram.png') }}" class="w-7 h-7 object-contain mb-2 grayscale opacity-50" alt="Instagram">
                                     <span class="text-xs font-medium text-stone-400">Instagram</span>
                                 </div>
                             @endif
