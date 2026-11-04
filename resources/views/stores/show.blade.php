@@ -114,42 +114,42 @@
                             </div>
                         </div>
 
-                        <!-- 3 Primary Contact Buttons (WhatsApp, Lokasi, Instagram) -->
-                        <div class="grid grid-cols-3 gap-2 sm:gap-2.5 mt-5">
+                        <!-- 3 Primary Contact Buttons (WhatsApp, Lokasi, Instagram) - Super Mini & Compact -->
+                        <div class="grid grid-cols-3 gap-2 sm:gap-2.5 mt-4">
                             <!-- 1. WhatsApp Direct -->
-                            <a href="https://wa.me/{{ $store->formatted_phone }}?text=Halo%20{{ urlencode($store->name) }},%20saya%20ingin%20tanya-tanya" target="_blank" class="group flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-white/[0.08] hover:bg-white/[0.14] text-stone-200 hover:text-white border border-white/10 hover:border-[#d4af7a]/40 shadow-xs transition-all text-center">
-                                <img src="{{ asset('icons/retro/whatsapp.png') }}" class="w-7 h-7 object-contain mb-1.5 drop-shadow-sm group-hover:scale-105 transition-transform" alt="WhatsApp">
-                                <span class="text-xs font-semibold tracking-tight">WhatsApp</span>
+                            <a href="https://wa.me/{{ $store->formatted_phone }}?text=Halo%20{{ urlencode($store->name) }},%20saya%20ingin%20tanya-tanya" target="_blank" class="group flex flex-col items-center justify-center py-1.5 px-1 rounded-xl bg-white/[0.08] hover:bg-white/[0.14] text-stone-200 hover:text-white border border-white/10 hover:border-[#d4af7a]/40 shadow-xs transition-all text-center">
+                                <img src="{{ asset('icons/retro/whatsapp.png') }}" class="w-5 h-5 object-contain mb-1 drop-shadow-sm group-hover:scale-105 transition-transform" alt="WhatsApp">
+                                <span class="text-[10px] font-semibold tracking-tight leading-tight">WhatsApp</span>
                             </a>
 
                             <!-- 2. Google Maps -->
                             @if($store->maps_url)
-                                <a href="{{ $store->maps_url }}" target="_blank" class="group flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-white/[0.08] hover:bg-white/[0.14] text-stone-200 hover:text-white border border-white/10 hover:border-[#d4af7a]/40 shadow-xs transition-all text-center">
-                                    <img src="{{ asset('icons/retro/lokasi.png') }}" class="w-7 h-7 object-contain mb-1.5 drop-shadow-sm group-hover:scale-105 transition-transform" alt="Lokasi">
-                                    <span class="text-xs font-semibold tracking-tight">Lokasi</span>
+                                <a href="{{ $store->maps_url }}" target="_blank" class="group flex flex-col items-center justify-center py-1.5 px-1 rounded-xl bg-white/[0.08] hover:bg-white/[0.14] text-stone-200 hover:text-white border border-white/10 hover:border-[#d4af7a]/40 shadow-xs transition-all text-center">
+                                    <img src="{{ asset('icons/retro/lokasi.png') }}" class="w-5 h-5 object-contain mb-1 drop-shadow-sm group-hover:scale-105 transition-transform" alt="Lokasi">
+                                    <span class="text-[10px] font-semibold tracking-tight leading-tight">Lokasi</span>
                                 </a>
                             @else
-                                <div class="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-white/[0.03] border border-white/5 text-stone-500 text-center opacity-50">
-                                    <img src="{{ asset('icons/retro/lokasi.png') }}" class="w-7 h-7 object-contain mb-1.5 grayscale opacity-40" alt="Lokasi">
-                                    <span class="text-xs font-medium text-stone-500">Lokasi</span>
+                                <div class="flex flex-col items-center justify-center py-1.5 px-1 rounded-xl bg-white/[0.03] border border-white/5 text-stone-500 text-center opacity-50">
+                                    <img src="{{ asset('icons/retro/lokasi.png') }}" class="w-5 h-5 object-contain mb-1 grayscale opacity-40" alt="Lokasi">
+                                    <span class="text-[10px] font-medium text-stone-500 leading-tight">Lokasi</span>
                                 </div>
                             @endif
 
                             <!-- 3. Instagram (or Telepon fallback) -->
                             @if($store->instagram)
-                                <a href="https://instagram.com/{{ ltrim($store->instagram, '@') }}" target="_blank" class="group flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-white/[0.08] hover:bg-white/[0.14] text-stone-200 hover:text-white border border-white/10 hover:border-[#d4af7a]/40 shadow-xs transition-all text-center">
-                                    <img src="{{ asset('icons/retro/instagram.png') }}" class="w-7 h-7 object-contain mb-1.5 drop-shadow-sm group-hover:scale-105 transition-transform" alt="Instagram">
-                                    <span class="text-xs font-semibold tracking-tight">Instagram</span>
+                                <a href="https://instagram.com/{{ ltrim($store->instagram, '@') }}" target="_blank" class="group flex flex-col items-center justify-center py-1.5 px-1 rounded-xl bg-white/[0.08] hover:bg-white/[0.14] text-stone-200 hover:text-white border border-white/10 hover:border-[#d4af7a]/40 shadow-xs transition-all text-center">
+                                    <img src="{{ asset('icons/retro/instagram.png') }}" class="w-5 h-5 object-contain mb-1 drop-shadow-sm group-hover:scale-105 transition-transform" alt="Instagram">
+                                    <span class="text-[10px] font-semibold tracking-tight leading-tight">Instagram</span>
                                 </a>
                             @elseif($store->phone)
-                                <a href="tel:{{ $store->formatted_phone }}" class="group flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-white/[0.08] hover:bg-white/[0.14] text-stone-200 hover:text-white border border-white/10 hover:border-[#d4af7a]/40 shadow-xs transition-all text-center">
-                                    <img src="{{ asset('icons/retro/telepon.png') }}" class="w-7 h-7 object-contain mb-1.5 drop-shadow-sm group-hover:scale-105 transition-transform" alt="Telepon">
-                                    <span class="text-xs font-semibold tracking-tight">Telepon</span>
+                                <a href="tel:{{ $store->formatted_phone }}" class="group flex flex-col items-center justify-center py-1.5 px-1 rounded-xl bg-white/[0.08] hover:bg-white/[0.14] text-stone-200 hover:text-white border border-white/10 hover:border-[#d4af7a]/40 shadow-xs transition-all text-center">
+                                    <img src="{{ asset('icons/retro/telepon.png') }}" class="w-5 h-5 object-contain mb-1 drop-shadow-sm group-hover:scale-105 transition-transform" alt="Telepon">
+                                    <span class="text-[10px] font-semibold tracking-tight leading-tight">Telepon</span>
                                 </a>
                             @else
-                                <div class="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-white/[0.03] border border-white/5 text-stone-500 text-center opacity-50">
-                                    <img src="{{ asset('icons/retro/instagram.png') }}" class="w-7 h-7 object-contain mb-1.5 grayscale opacity-40" alt="Instagram">
-                                    <span class="text-xs font-medium text-stone-500">Instagram</span>
+                                <div class="flex flex-col items-center justify-center py-1.5 px-1 rounded-xl bg-white/[0.03] border border-white/5 text-stone-500 text-center opacity-50">
+                                    <img src="{{ asset('icons/retro/instagram.png') }}" class="w-5 h-5 object-contain mb-1 grayscale opacity-40" alt="Instagram">
+                                    <span class="text-[10px] font-medium text-stone-500 leading-tight">Instagram</span>
                                 </div>
                             @endif
                         </div>
