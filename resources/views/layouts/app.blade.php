@@ -40,10 +40,8 @@
             <div class="flex items-center justify-between h-16">
                 <!-- Brand Logo -->
                 <a href="{{ route('home') }}" class="flex items-center gap-2 group shrink-0">
-                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center text-white shadow-md shadow-emerald-500/20 group-hover:scale-105 transition-transform">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/>
-                        </svg>
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform">
+                        <img src="{{ asset('icons/retro/qr-scan.png') }}" class="w-full h-full object-contain rounded-xl drop-shadow-sm" alt="QRToko">
                     </div>
                     <div class="flex items-center">
                         <span class="text-base sm:text-lg font-black tracking-tight text-slate-900 group-hover:text-emerald-600 transition-colors">QRToko</span>

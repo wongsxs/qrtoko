@@ -97,9 +97,7 @@
                     <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/90 space-y-3">
                         <div class="flex items-center justify-between">
                             <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
-                                <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                </svg>
+                                <img src="{{ asset('icons/retro/jam-operasional.png') }}" class="w-4 h-4 rounded-xs object-contain" alt="Jam Operasional">
                                 <span>Jam Operasional</span>
                             </label>
                             <button 
@@ -240,8 +238,9 @@
                         $currentFacilities = old('facilities', array_merge($rawDbFacilities, $normalizedDbFacilities));
                     @endphp
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 uppercase mb-2">
-                            Fasilitas & Layanan (Pilih yang tersedia)
+                        <label class="flex items-center gap-1.5 text-xs font-bold text-slate-700 uppercase mb-2">
+                            <img src="{{ asset('icons/retro/fasilitas.png') }}" class="w-4 h-4 rounded-xs object-contain" alt="Fasilitas">
+                            <span>Fasilitas & Layanan (Pilih yang tersedia)</span>
                         </label>
                         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 p-3 rounded-2xl bg-slate-50 border border-slate-200">
                             @foreach($availableFacilities as $fac)
@@ -271,10 +270,8 @@
                 <div class="flex items-center justify-between">
                     <div>
                         <h2 class="text-base font-bold text-slate-900 flex items-center gap-2">
-                            <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
-                            </svg>
-                            Daftar Menu & Harga
+                            <img src="{{ asset('icons/retro/menu.png') }}" class="w-5 h-5 rounded-md object-contain shrink-0" alt="Menu">
+                            <span>Daftar Menu & Harga</span>
                         </h2>
                         <p class="text-xs text-slate-500 mt-0.5">Kelola daftar menu yang tampil saat pelanggan memindai QR.</p>
                     </div>
@@ -332,9 +329,7 @@
                                     @if($product->image_url_formatted)
                                         <img src="{{ $product->image_url_formatted }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
                                     @else
-                                        <svg class="w-6 h-6 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                                        </svg>
+                                        <img src="{{ asset('icons/retro/menu.png') }}" class="w-6 h-6 object-contain opacity-70" alt="Menu">
                                     @endif
                                 </div>
                                 <div class="flex-1 min-w-0">

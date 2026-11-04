@@ -55,11 +55,7 @@
                     <!-- Announcement Strip -->
                     @if($store->announcement)
                         <div class="bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 text-white px-4 py-2.5 text-xs font-semibold flex items-center gap-2.5 shadow-sm">
-                            <span class="p-1 rounded-lg bg-white/20 text-white shrink-0">
-                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/>
-                                </svg>
-                            </span>
+                            <img src="{{ asset('icons/retro/promo.png') }}" class="w-5 h-5 rounded-md object-contain shrink-0 drop-shadow-xs" alt="Promo Toko">
                             <span class="truncate leading-tight font-medium">{{ $store->announcement }}</span>
                         </div>
                     @endif
@@ -115,51 +111,39 @@
                         </div>
 
                         <!-- Quick Action Buttons -->
-                        <div class="grid grid-cols-3 gap-2 mt-5">
+                        <div class="grid {{ $store->instagram ? 'grid-cols-4' : 'grid-cols-3' }} gap-2 mt-5">
                             <!-- WhatsApp Direct -->
-                            <a href="https://wa.me/{{ $store->formatted_phone }}?text=Halo%20{{ urlencode($store->name) }},%20saya%20ingin%20tanya-tanya" target="_blank" class="flex flex-col items-center justify-center py-2.5 px-2 rounded-xl bg-white/10 hover:bg-emerald-500/30 border border-white/10 text-white transition-all text-center">
-                                <svg class="w-5 h-5 text-emerald-300 mb-1" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.838.835 2.791.835 3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.766-5.768-5.766zm9.969 5.766c0 5.518-4.482 10-10 10-1.745 0-3.381-.453-4.814-1.246l-5.186 1.358 1.385-5.064c-.879-1.493-1.385-3.232-1.385-5.048 0-5.518 4.482-10 10-10 5.518 0 10 4.482 10 10z"/>
-                                </svg>
-                                <span class="text-[11px] font-semibold">WhatsApp</span>
+                            <a href="https://wa.me/{{ $store->formatted_phone }}?text=Halo%20{{ urlencode($store->name) }},%20saya%20ingin%20tanya-tanya" target="_blank" class="group flex flex-col items-center justify-center py-2 px-1 rounded-2xl bg-white/10 hover:bg-emerald-500/30 border border-white/15 text-white transition-all text-center shadow-xs">
+                                <img src="{{ asset('icons/retro/whatsapp.png') }}" class="w-8 h-8 rounded-xl object-contain drop-shadow-md group-hover:scale-110 transition-transform mb-1" alt="WhatsApp">
+                                <span class="text-[10px] sm:text-[11px] font-bold text-white tracking-tight">WhatsApp</span>
                             </a>
 
                             <!-- Google Maps -->
                             @if($store->maps_url)
-                                <a href="{{ $store->maps_url }}" target="_blank" class="flex flex-col items-center justify-center py-2.5 px-2 rounded-xl bg-white/10 hover:bg-sky-500/30 border border-white/10 text-white transition-all text-center">
-                                    <svg class="w-5 h-5 text-sky-300 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                                    </svg>
-                                    <span class="text-[11px] font-semibold">Maps</span>
+                                <a href="{{ $store->maps_url }}" target="_blank" class="group flex flex-col items-center justify-center py-2 px-1 rounded-2xl bg-white/10 hover:bg-sky-500/30 border border-white/15 text-white transition-all text-center shadow-xs">
+                                    <img src="{{ asset('icons/retro/lokasi.png') }}" class="w-8 h-8 rounded-xl object-contain drop-shadow-md group-hover:scale-110 transition-transform mb-1" alt="Lokasi">
+                                    <span class="text-[10px] sm:text-[11px] font-bold text-white tracking-tight">Lokasi</span>
                                 </a>
                             @else
-                                <div class="flex flex-col items-center justify-center py-2.5 px-2 rounded-xl bg-white/5 border border-white/5 text-slate-400 text-center opacity-60">
-                                    <svg class="w-5 h-5 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                                    </svg>
-                                    <span class="text-[11px]">Maps</span>
+                                <div class="flex flex-col items-center justify-center py-2 px-1 rounded-2xl bg-white/5 border border-white/5 text-slate-400 text-center opacity-50">
+                                    <img src="{{ asset('icons/retro/lokasi.png') }}" class="w-8 h-8 rounded-xl object-contain grayscale opacity-60 mb-1" alt="Lokasi">
+                                    <span class="text-[10px] sm:text-[11px] font-semibold text-slate-400">Lokasi</span>
                                 </div>
                             @endif
 
-                            <!-- Instagram -->
+                            <!-- Instagram (if provided) -->
                             @if($store->instagram)
-                                <a href="https://instagram.com/{{ ltrim($store->instagram, '@') }}" target="_blank" class="flex flex-col items-center justify-center py-2.5 px-2 rounded-xl bg-white/10 hover:bg-pink-500/30 border border-white/10 text-white transition-all text-center">
-                                    <svg class="w-5 h-5 text-pink-300 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke-width="2"></rect>
-                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke-width="2"></path>
-                                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-width="2"></line>
-                                    </svg>
-                                    <span class="text-[11px] font-semibold">Instagram</span>
+                                <a href="https://instagram.com/{{ ltrim($store->instagram, '@') }}" target="_blank" class="group flex flex-col items-center justify-center py-2 px-1 rounded-2xl bg-white/10 hover:bg-pink-500/30 border border-white/15 text-white transition-all text-center shadow-xs">
+                                    <img src="{{ asset('icons/retro/instagram.png') }}" class="w-8 h-8 rounded-xl object-contain drop-shadow-md group-hover:scale-110 transition-transform mb-1" alt="Instagram">
+                                    <span class="text-[10px] sm:text-[11px] font-bold text-white tracking-tight">Instagram</span>
                                 </a>
-                            @else
-                                <button type="button" onclick="openQrModal()" class="flex flex-col items-center justify-center py-2.5 px-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 text-white transition-all text-center">
-                                    <svg class="w-5 h-5 text-amber-300 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
-                                    </svg>
-                                    <span class="text-[11px] font-semibold">Bagi QR</span>
-                                </button>
                             @endif
+
+                            <!-- Bagi QR Modal Button -->
+                            <button type="button" onclick="openQrModal()" class="group flex flex-col items-center justify-center py-2 px-1 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/15 text-white transition-all text-center shadow-xs">
+                                <img src="{{ asset('icons/retro/qr-scan.png') }}" class="w-8 h-8 rounded-xl object-contain drop-shadow-md group-hover:scale-110 transition-transform mb-1" alt="QR Code">
+                                <span class="text-[10px] sm:text-[11px] font-bold text-white tracking-tight">Bagi QR</span>
+                            </button>
                         </div>
 
                     </div>
@@ -168,9 +152,7 @@
                     <div class="p-5 space-y-3 text-xs text-slate-600 bg-white">
                         @if($store->opening_hours)
                             <div class="flex items-start gap-2.5">
-                                <svg class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                </svg>
+                                <img src="{{ asset('icons/retro/jam-operasional.png') }}" class="w-5 h-5 rounded-md object-contain shrink-0 mt-0.5" alt="Jam Operasional">
                                 <div>
                                     <strong class="text-slate-900 block font-semibold">Jam Operasional:</strong>
                                     <span>{{ $store->opening_hours }}</span>
@@ -180,9 +162,7 @@
 
                         @if($store->address)
                             <div class="flex items-start gap-2.5">
-                                <svg class="w-4 h-4 text-slate-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                                </svg>
+                                <img src="{{ asset('icons/retro/lokasi.png') }}" class="w-5 h-5 rounded-md object-contain shrink-0 mt-0.5" alt="Alamat Toko">
                                 <div>
                                     <strong class="text-slate-900 block font-semibold">Alamat Toko:</strong>
                                     <span class="leading-relaxed">{{ $store->address }}</span>
@@ -191,14 +171,23 @@
                         @endif
 
                         @if($store->description)
-                            <div class="pt-3 border-t border-slate-100 text-slate-500 leading-relaxed text-xs">
-                                {{ $store->description }}
+                            <div class="pt-3 border-t border-slate-100 space-y-1">
+                                <div class="flex items-center gap-1.5 text-slate-700">
+                                    <img src="{{ asset('icons/retro/tentang.png') }}" class="w-4 h-4 rounded-xs object-contain shrink-0" alt="Tentang Toko">
+                                    <strong class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Tentang Toko</strong>
+                                </div>
+                                <p class="text-slate-600 leading-relaxed text-xs">
+                                    {{ $store->description }}
+                                </p>
                             </div>
                         @endif
 
                         @if(!empty($store->facilities))
                             <div class="pt-3 border-t border-slate-100 space-y-2">
-                                <strong class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">Fasilitas & Layanan</strong>
+                                <div class="flex items-center gap-1.5">
+                                    <img src="{{ asset('icons/retro/fasilitas.png') }}" class="w-4 h-4 rounded-xs object-contain shrink-0" alt="Fasilitas">
+                                    <strong class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Fasilitas & Layanan</strong>
+                                </div>
                                 <div class="flex flex-wrap gap-1.5">
                                     @foreach($store->facilities as $fac)
                                         @php
@@ -206,18 +195,12 @@
                                             $facLower = strtolower($fac);
                                         @endphp
                                         <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 text-[11px] font-semibold border border-slate-200/80 transition-colors">
-                                            @if(str_contains($facLower, 'qris') || str_contains($facLower, 'bayar') || str_contains($facLower, 'kartu'))
-                                                <svg class="w-3.5 h-3.5 text-emerald-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
-                                                </svg>
-                                            @elseif(str_contains($facLower, 'wifi') || str_contains($facLower, 'wi-fi'))
-                                                <svg class="w-3.5 h-3.5 text-sky-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.393 9.393c5.857-5.857 15.355-5.857 21.213 0"/>
-                                                </svg>
+                                            @if(str_contains($facLower, 'wifi') || str_contains($facLower, 'wi-fi'))
+                                                <img src="{{ asset('icons/retro/wifi.png') }}" class="w-4 h-4 rounded-xs object-contain shrink-0" alt="WiFi">
                                             @elseif(str_contains($facLower, 'parkir') || str_contains($facLower, 'mobil') || str_contains($facLower, 'motor'))
-                                                <svg class="w-3.5 h-3.5 text-slate-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h4a3 3 0 010 6H8V7zm0 6v5"/>
-                                                </svg>
+                                                <img src="{{ asset('icons/retro/parkir.png') }}" class="w-4 h-4 rounded-xs object-contain shrink-0" alt="Parkir">
+                                            @elseif(str_contains($facLower, 'qris') || str_contains($facLower, 'bayar') || str_contains($facLower, 'kartu'))
+                                                <img src="{{ asset('icons/retro/qr-scan.png') }}" class="w-4 h-4 rounded-xs object-contain shrink-0" alt="QRIS">
                                             @elseif(str_contains($facLower, 'delivery') || str_contains($facLower, 'kirim') || str_contains($facLower, 'antar'))
                                                 <svg class="w-3.5 h-3.5 text-amber-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/>
@@ -239,9 +222,7 @@
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/>
                                                 </svg>
                                             @else
-                                                <svg class="w-3.5 h-3.5 text-emerald-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                                </svg>
+                                                <img src="{{ asset('icons/retro/info.png') }}" class="w-3.5 h-3.5 rounded-xs object-contain shrink-0" alt="Info">
                                             @endif
                                             <span>{{ $cleanFac ?: $fac }}</span>
                                         </span>
@@ -255,10 +236,8 @@
 
                 <!-- Desktop / Tablet QR Box helper (Hidden on small mobile screens, visible on md+) -->
                 <div class="hidden md:block bg-white rounded-3xl p-5 border border-slate-200/80 shadow-sm text-center space-y-3">
-                    <div class="inline-flex items-center gap-1.5 text-xs font-bold text-slate-700">
-                        <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
-                        </svg>
+                    <div class="inline-flex items-center gap-2 text-xs font-bold text-slate-700">
+                        <img src="{{ asset('icons/retro/qr-scan.png') }}" class="w-5 h-5 rounded-md object-contain shrink-0" alt="QR Scan">
                         <span>Buka Menu di Ponsel</span>
                     </div>
                     <div id="desktop-qrcode" class="flex justify-center p-3 bg-slate-50 rounded-2xl border border-slate-100"></div>
@@ -273,9 +252,7 @@
                 <div class="space-y-3">
                     <div class="flex items-center justify-between pb-2 border-b border-slate-200">
                         <h2 class="text-base sm:text-lg font-black tracking-tight text-slate-900 flex items-center gap-2">
-                            <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
-                            </svg>
+                            <img src="{{ asset('icons/retro/menu.png') }}" class="w-6 h-6 rounded-lg object-contain shrink-0" alt="Menu">
                             <span>Daftar Menu & Harga</span>
                         </h2>
                         <span class="text-xs font-bold px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/60 shadow-2xs">
@@ -392,10 +369,8 @@
                                                         <img src="{{ $product->image_url_formatted }}" alt="{{ $product->name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                                                     </div>
                                                 @else
-                                                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-slate-50 border border-slate-200/70 flex items-center justify-center shrink-0 text-slate-400 group-hover:text-emerald-600 group-hover:bg-emerald-50/60 transition-colors">
-                                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                                                        </svg>
+                                                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-amber-50/70 border border-amber-200/50 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                                                        <img src="{{ asset('icons/retro/menu.png') }}" class="w-7 h-7 object-contain opacity-80 group-hover:opacity-100 transition-opacity" alt="Menu">
                                                     </div>
                                                 @endif
 
@@ -467,7 +442,10 @@
                 </svg>
             </button>
 
-            <h3 class="text-base font-bold text-slate-900 mb-1">QR Code Toko</h3>
+            <div class="flex items-center justify-center gap-2 mb-1">
+                <img src="{{ asset('icons/retro/qr-scan.png') }}" class="w-6 h-6 rounded-lg object-contain shrink-0" alt="QR Code">
+                <h3 class="text-base font-black text-slate-900">QR Code Toko</h3>
+            </div>
             <p class="text-xs text-slate-500 mb-4">{{ $store->name }}</p>
 
             <div class="bg-slate-50 p-4 rounded-2xl inline-block border border-slate-200 mx-auto">
@@ -477,8 +455,9 @@
             <p class="text-[11px] text-slate-400 mt-3">Scan kamera HP untuk langsung membuka halaman ini.</p>
 
             <div class="flex gap-2 mt-5">
-                <button type="button" onclick="copyStoreUrl()" class="flex-1 py-2.5 rounded-xl border border-slate-300 hover:bg-slate-50 text-slate-700 text-xs font-semibold">
-                    Salin Link
+                <button type="button" onclick="copyStoreUrl()" class="flex-1 py-2.5 rounded-xl border border-slate-300 hover:bg-slate-50 text-slate-700 text-xs font-semibold flex items-center justify-center gap-1.5">
+                    <img src="{{ asset('icons/retro/bagikan.png') }}" class="w-4 h-4 rounded-xs object-contain shrink-0" alt="Bagikan">
+                    <span>Salin Link</span>
                 </button>
                 <a href="{{ route('stores.qr', $store->slug) }}" class="flex-1 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold flex items-center justify-center gap-1.5 shadow-sm">
                     <span>Cetak QR Meja</span>
