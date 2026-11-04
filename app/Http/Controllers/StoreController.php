@@ -154,7 +154,7 @@ class StoreController extends Controller
      */
     protected function authorizeStore(Store $store): void
     {
-        if ($store->user_id && $store->user_id !== Auth::id()) {
+        if (! Auth::check() || $store->user_id !== Auth::id()) {
             abort(403, 'Kamu tidak memiliki izin untuk mengelola toko ini.');
         }
     }

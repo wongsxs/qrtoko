@@ -13,9 +13,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // Guest Authentication Routes
 Route::middleware('guest')->group(function () {
     Route::get('/daftar', [AuthController::class, 'showRegister'])->name('register');
-    Route::post('/daftar', [AuthController::class, 'register'])->name('register.submit');
+    Route::post('/daftar', [AuthController::class, 'register'])->middleware('throttle:10,1')->name('register.submit');
     Route::get('/masuk', [AuthController::class, 'showLogin'])->name('login');
-    Route::post('/masuk', [AuthController::class, 'login'])->name('login.submit');
+    Route::post('/masuk', [AuthController::class, 'login'])->middleware('throttle:10,1')->name('login.submit');
 });
 
 // Authenticated Merchant Routes

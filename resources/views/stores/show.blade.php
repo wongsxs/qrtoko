@@ -428,13 +428,16 @@
                                                 </span>
                                             </div>
 
-                                            <template class="product-data">{!! json_encode([
-                                                'name' => $product->name,
-                                                'category' => $category,
-                                                'price' => $product->formatted_price,
-                                                'description' => $product->description ?? 'Tidak ada deskripsi tambahan untuk menu ini.',
-                                                'image' => $product->image_url_formatted ?? ''
-                                            ]) !!}</template>
+                                            @php
+                                                $productJson = json_encode([
+                                                    'name' => $product->name,
+                                                    'category' => $category,
+                                                    'price' => $product->formatted_price,
+                                                    'description' => $product->description ?? 'Tidak ada deskripsi tambahan untuk menu ini.',
+                                                    'image' => $product->image_url_formatted ?? ''
+                                                ], JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP);
+                                            @endphp
+                                            <template class="product-data">{!! $productJson !!}</template>
                                         </div>
                                     @endforeach
                                 </div>

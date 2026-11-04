@@ -29,7 +29,7 @@ class StoreRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'slug' => ['nullable', 'string', 'max:255', Rule::unique('stores', 'slug')->ignore($storeId)],
             'tagline' => ['nullable', 'string', 'max:255'],
-            'logo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp,svg', 'max:2048'],
+            'logo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
             'description' => ['nullable', 'string'],
             'announcement' => ['nullable', 'string', 'max:500'],
             'facilities' => ['nullable', 'array'],

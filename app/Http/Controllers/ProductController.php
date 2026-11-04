@@ -49,7 +49,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, Store $store, Product $product): RedirectResponse
     {
-        $this->authorizeStore($store);
+        $this->authorizeStore($store, $product);
 
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -81,7 +81,7 @@ class ProductController extends Controller
      */
     public function destroy(Store $store, Product $product): RedirectResponse
     {
-        $this->authorizeStore($store);
+        $this->authorizeStore($store, $product);
 
         if ($product->image_url) {
             $this->storageService->delete($product->image_url);
@@ -96,12 +96,16 @@ class ProductController extends Controller
     }
 
     /**
-     * Verify that the current user owns this store.
+     * Verify that the current user owns this store and product belongs to store.
      */
-    protected function authorizeStore(Store $store): void
+    protected function authorizeStore(Store $store, ?Product $product = null): void
     {
-        if ($store->user_id && $store->user_id !== Auth::id()) {
+        if (! Auth::check() || $store->user_id !== Auth::id()) {
             abort(403, 'Kamu tidak memiliki izin untuk mengelola produk toko ini.');
+        }
+
+        if ($product && $product->store_id !== $store->id) {
+            abort(404);
         }
     }
 }
