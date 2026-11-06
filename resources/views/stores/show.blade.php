@@ -162,7 +162,7 @@
                         <!-- Jam Operasional -->
                         @if($store->opening_hours)
                             <div class="flex items-start gap-3">
-                                <img src="{{ asset('icons/retro/jam-operasional.png') }}" class="w-4 h-4 mt-0.5 object-contain shrink-0" alt="">
+                                <x-vintage-icon name="clock" class="w-4 h-4 mt-0.5 text-[#b47b2b]" />
                                 <div>
                                     <span class="text-[10px] font-bold uppercase tracking-wider text-stone-400 block">Jam Operasional</span>
                                     <span class="text-stone-800 text-xs font-semibold leading-relaxed">{{ $store->opening_hours }}</span>
@@ -173,7 +173,7 @@
                         <!-- Alamat Toko -->
                         @if($store->address)
                             <div class="flex items-start gap-3">
-                                <img src="{{ asset('icons/retro/lokasi.png') }}" class="w-4 h-4 mt-0.5 object-contain shrink-0" alt="">
+                                <x-vintage-icon name="pinpoint" class="w-4 h-4 mt-0.5 text-[#b47b2b]" />
                                 <div>
                                     <span class="text-[10px] font-bold uppercase tracking-wider text-stone-400 block">Alamat Toko</span>
                                     <span class="text-stone-800 text-xs font-medium leading-relaxed">{{ $store->address }}</span>
@@ -185,7 +185,7 @@
                         @if($store->description)
                             <div class="pt-3 border-t border-stone-100">
                                 <div class="flex items-center gap-1.5 text-stone-800 mb-1">
-                                    <img src="{{ asset('icons/retro/tentang.png') }}" class="w-3.5 h-3.5 object-contain shrink-0" alt="">
+                                    <x-vintage-icon name="info" class="w-3.5 h-3.5 text-[#b47b2b]" />
                                     <span class="text-[10px] font-bold uppercase tracking-wider text-stone-400">Tentang Toko</span>
                                 </div>
                                 <p class="text-stone-700 text-xs leading-relaxed">
@@ -198,7 +198,7 @@
                         @if(!empty($store->facilities))
                             <div class="pt-3 border-t border-stone-100 space-y-2">
                                 <div class="flex items-center gap-1.5">
-                                    <img src="{{ asset('icons/retro/fasilitas.png') }}" class="w-3.5 h-3.5 object-contain shrink-0" alt="">
+                                    <x-vintage-icon name="info" class="w-3.5 h-3.5 text-stone-400" />
                                     <span class="text-[10px] font-bold uppercase tracking-wider text-stone-400">Fasilitas & Layanan</span>
                                 </div>
                                 <div class="flex flex-wrap gap-1.5">
@@ -209,13 +209,13 @@
                                         @endphp
                                         <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#f8f5ee] text-stone-800 text-[11px] font-medium border border-[#e8e2d4]">
                                             @if(str_contains($facLower, 'wifi') || str_contains($facLower, 'wi-fi'))
-                                                <img src="{{ asset('icons/retro/wifi.png') }}" class="w-3.5 h-3.5 object-contain shrink-0" alt="WiFi">
+                                                <x-vintage-icon name="wifi" class="w-3.5 h-3.5 text-[#1b4332]" />
                                             @elseif(str_contains($facLower, 'parkir') || str_contains($facLower, 'mobil') || str_contains($facLower, 'motor'))
-                                                <img src="{{ asset('icons/retro/parkir.png') }}" class="w-3.5 h-3.5 object-contain shrink-0" alt="Parkir">
+                                                <x-vintage-icon name="car" class="w-3.5 h-3.5 text-[#1b4332]" />
                                             @elseif(str_contains($facLower, 'qris') || str_contains($facLower, 'bayar') || str_contains($facLower, 'kartu'))
-                                                <img src="{{ asset('icons/retro/qr-scan.png') }}" class="w-3.5 h-3.5 object-contain shrink-0" alt="QRIS">
+                                                <x-vintage-icon name="credit-card" class="w-3.5 h-3.5 text-[#1b4332]" />
                                             @else
-                                                <img src="{{ asset('icons/retro/info.png') }}" class="w-3.5 h-3.5 object-contain shrink-0" alt="">
+                                                <x-vintage-icon name="info" class="w-3.5 h-3.5 text-[#1b4332]" />
                                             @endif
                                             <span>{{ $cleanFac ?: $fac }}</span>
                                         </span>
@@ -263,7 +263,7 @@
                     <!-- Section Header (Bold, Clear, Human) -->
                     <div class="flex items-center justify-between pb-3 border-b border-[#e5decb]">
                         <h2 class="text-lg sm:text-xl font-black tracking-tight text-[#24160e] flex items-center gap-2">
-                            <img src="{{ asset('icons/retro/menu.png') }}" class="w-6 h-6 object-contain shrink-0" alt="">
+                            <x-vintage-icon name="cup" class="w-5 h-5 text-[#b47b2b]" />
                             <span>Daftar Menu & Harga</span>
                         </h2>
                         <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-[#f4efe8] text-stone-700 border border-[#e5decb]">
@@ -381,7 +381,7 @@
                                                     </div>
                                                 @else
                                                     <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-[#f8f5ee] border border-[#e8e2d4] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                                                        <img src="{{ asset('icons/retro/menu.png') }}" class="w-6 h-6 object-contain opacity-75 group-hover:opacity-100 transition-opacity" alt="Menu">
+                                                        <x-vintage-icon name="cup" class="w-6 h-6 text-[#7c5e43] opacity-80 group-hover:opacity-100 transition-opacity" />
                                                     </div>
                                                 @endif
 
