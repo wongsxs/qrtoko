@@ -97,7 +97,7 @@
                     <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/90 space-y-3">
                         <div class="flex items-center justify-between">
                             <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
-                                <img src="{{ asset('icons/retro/jam-operasional.png') }}" class="w-4 h-4 rounded-xs object-contain" alt="Jam Operasional">
+                                <x-vintage-icon name="clock" class="w-4 h-4 text-slate-700" />
                                 <span>Jam Operasional</span>
                             </label>
                             <button 
@@ -239,7 +239,7 @@
                     @endphp
                     <div>
                         <label class="flex items-center gap-1.5 text-xs font-bold text-slate-700 uppercase mb-2">
-                            <img src="{{ asset('icons/retro/fasilitas.png') }}" class="w-4 h-4 rounded-xs object-contain" alt="Fasilitas">
+                            <x-vintage-icon name="ticket" class="w-4 h-4 text-slate-700" />
                             <span>Fasilitas & Layanan (Pilih yang tersedia)</span>
                         </label>
                         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 p-3 rounded-2xl bg-slate-50 border border-slate-200">
@@ -270,7 +270,7 @@
                 <div class="flex items-center justify-between">
                     <div>
                         <h2 class="text-base font-bold text-slate-900 flex items-center gap-2">
-                            <img src="{{ asset('icons/retro/menu.png') }}" class="w-5 h-5 rounded-md object-contain shrink-0" alt="Menu">
+                            <x-vintage-icon name="cup" class="w-5 h-5 text-slate-800" />
                             <span>Daftar Menu & Harga</span>
                         </h2>
                         <p class="text-xs text-slate-500 mt-0.5">Kelola daftar menu yang tampil saat pelanggan memindai QR.</p>
@@ -329,7 +329,7 @@
                                     @if($product->image_url_formatted)
                                         <img src="{{ $product->image_url_formatted }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
                                     @else
-                                        <img src="{{ asset('icons/retro/menu.png') }}" class="w-6 h-6 object-contain opacity-70" alt="Menu">
+                                        <x-vintage-icon name="cup" class="w-6 h-6 text-slate-400" />
                                     @endif
                                 </div>
                                 <div class="flex-1 min-w-0">

@@ -55,7 +55,7 @@
                     <!-- Thin Announcement Strip (Subtle & Not Dominating) -->
                     @if($store->announcement)
                         <div class="bg-[#2a170e] text-[#f2e7d5] px-4 py-2 text-[11px] font-medium flex items-center gap-2 border-b border-[#3d2417]">
-                            <span class="px-1.5 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider bg-[#b47b2b] text-[#24160e] shrink-0">Info</span>
+                            <x-vintage-icon name="megaphone" class="w-3.5 h-3.5 text-[#b47b2b]" />
                             <span class="truncate leading-tight text-stone-200">{{ $store->announcement }}</span>
                         </div>
                     @endif
@@ -114,23 +114,23 @@
                             </div>
                         </div>
 
-                        <!-- 3 Primary Contact Buttons (WhatsApp, Lokasi, Instagram) - Super Mini & Compact -->
+                        <!-- 3 Primary Contact Buttons (WhatsApp, Lokasi, Instagram) - Vector SVGs -->
                         <div class="grid grid-cols-3 gap-2 sm:gap-2.5 mt-4">
                             <!-- 1. WhatsApp Direct -->
                             <a href="https://wa.me/{{ $store->formatted_phone }}?text=Halo%20{{ urlencode($store->name) }},%20saya%20ingin%20tanya-tanya" target="_blank" class="group flex flex-col items-center justify-center py-1.5 px-1 rounded-xl bg-white/[0.08] hover:bg-white/[0.14] text-stone-200 hover:text-white border border-white/10 hover:border-[#d4af7a]/40 shadow-xs transition-all text-center">
-                                <img src="{{ asset('icons/retro/whatsapp.png') }}" class="w-5 h-5 object-contain mb-1 drop-shadow-sm group-hover:scale-105 transition-transform" alt="WhatsApp">
+                                <x-vintage-icon name="whatsapp" pack="brand" class="w-4.5 h-4.5 mb-1 text-emerald-400 group-hover:scale-105 transition-transform" />
                                 <span class="text-[10px] font-semibold tracking-tight leading-tight">WhatsApp</span>
                             </a>
 
                             <!-- 2. Google Maps -->
                             @if($store->maps_url)
                                 <a href="{{ $store->maps_url }}" target="_blank" class="group flex flex-col items-center justify-center py-1.5 px-1 rounded-xl bg-white/[0.08] hover:bg-white/[0.14] text-stone-200 hover:text-white border border-white/10 hover:border-[#d4af7a]/40 shadow-xs transition-all text-center">
-                                    <img src="{{ asset('icons/retro/lokasi.png') }}" class="w-5 h-5 object-contain mb-1 drop-shadow-sm group-hover:scale-105 transition-transform" alt="Lokasi">
+                                    <x-vintage-icon name="googlemaps" pack="brand" class="w-4.5 h-4.5 mb-1 text-amber-400 group-hover:scale-105 transition-transform" />
                                     <span class="text-[10px] font-semibold tracking-tight leading-tight">Lokasi</span>
                                 </a>
                             @else
                                 <div class="flex flex-col items-center justify-center py-1.5 px-1 rounded-xl bg-white/[0.03] border border-white/5 text-stone-500 text-center opacity-50">
-                                    <img src="{{ asset('icons/retro/lokasi.png') }}" class="w-5 h-5 object-contain mb-1 grayscale opacity-40" alt="Lokasi">
+                                    <x-vintage-icon name="googlemaps" pack="brand" class="w-4.5 h-4.5 mb-1 text-stone-500 opacity-40" />
                                     <span class="text-[10px] font-medium text-stone-500 leading-tight">Lokasi</span>
                                 </div>
                             @endif
@@ -138,17 +138,17 @@
                             <!-- 3. Instagram (or Telepon fallback) -->
                             @if($store->instagram)
                                 <a href="https://instagram.com/{{ ltrim($store->instagram, '@') }}" target="_blank" class="group flex flex-col items-center justify-center py-1.5 px-1 rounded-xl bg-white/[0.08] hover:bg-white/[0.14] text-stone-200 hover:text-white border border-white/10 hover:border-[#d4af7a]/40 shadow-xs transition-all text-center">
-                                    <img src="{{ asset('icons/retro/instagram.png') }}" class="w-5 h-5 object-contain mb-1 drop-shadow-sm group-hover:scale-105 transition-transform" alt="Instagram">
+                                    <x-vintage-icon name="instagram" pack="brand" class="w-4.5 h-4.5 mb-1 text-rose-400 group-hover:scale-105 transition-transform" />
                                     <span class="text-[10px] font-semibold tracking-tight leading-tight">Instagram</span>
                                 </a>
                             @elseif($store->phone)
                                 <a href="tel:{{ $store->formatted_phone }}" class="group flex flex-col items-center justify-center py-1.5 px-1 rounded-xl bg-white/[0.08] hover:bg-white/[0.14] text-stone-200 hover:text-white border border-white/10 hover:border-[#d4af7a]/40 shadow-xs transition-all text-center">
-                                    <img src="{{ asset('icons/retro/telepon.png') }}" class="w-5 h-5 object-contain mb-1 drop-shadow-sm group-hover:scale-105 transition-transform" alt="Telepon">
+                                    <x-vintage-icon name="phone" class="w-4.5 h-4.5 mb-1 text-stone-200 group-hover:scale-105 transition-transform" />
                                     <span class="text-[10px] font-semibold tracking-tight leading-tight">Telepon</span>
                                 </a>
                             @else
                                 <div class="flex flex-col items-center justify-center py-1.5 px-1 rounded-xl bg-white/[0.03] border border-white/5 text-stone-500 text-center opacity-50">
-                                    <img src="{{ asset('icons/retro/instagram.png') }}" class="w-5 h-5 object-contain mb-1 grayscale opacity-40" alt="Instagram">
+                                    <x-vintage-icon name="instagram" pack="brand" class="w-4.5 h-4.5 mb-1 text-stone-500 opacity-40" />
                                     <span class="text-[10px] font-medium text-stone-500 leading-tight">Instagram</span>
                                 </div>
                             @endif
@@ -227,13 +227,11 @@
                         <!-- Secondary Utilities: Bagi QR & Standee Meja -->
                         <div class="pt-3 border-t border-stone-100 flex items-center gap-2">
                             <button type="button" onclick="openQrModal()" class="flex-1 py-2 px-2.5 rounded-xl bg-[#faf7f2] hover:bg-white text-stone-700 hover:text-stone-900 border border-[#e2d9cb] hover:border-[#b47b2b]/50 text-xs font-semibold flex items-center justify-center gap-1.5 transition-all shadow-2xs cursor-pointer">
-                                <img src="{{ asset('icons/retro/qr-scan.png') }}" class="w-3.5 h-3.5 object-contain shrink-0" alt="">
+                                <x-vintage-icon name="qr-code" class="w-3.5 h-3.5 text-stone-600" />
                                 <span>Bagi QR</span>
                             </button>
                             <a href="{{ route('stores.qr', $store->slug) }}" class="flex-1 py-2 px-2.5 rounded-xl bg-[#faf7f2] hover:bg-white text-stone-700 hover:text-stone-900 border border-[#e2d9cb] hover:border-[#b47b2b]/50 text-xs font-semibold flex items-center justify-center gap-1.5 transition-all shadow-2xs">
-                                <svg class="w-3.5 h-3.5 text-stone-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
-                                </svg>
+                                <x-vintage-icon name="printer" class="w-3.5 h-3.5 text-stone-600" />
                                 <span>Cetak Standee</span>
                             </a>
                         </div>
@@ -247,7 +245,7 @@
                     <div id="desktop-qrcode" class="shrink-0 p-1 bg-[#faf7f2] rounded-xl border border-[#e8e2d4]"></div>
                     <div class="text-left space-y-0.5">
                         <span class="inline-flex items-center gap-1.5 text-xs font-bold text-stone-800">
-                            <img src="{{ asset('icons/retro/qr-scan.png') }}" class="w-3.5 h-3.5 object-contain" alt="">
+                            <x-vintage-icon name="qr-code" class="w-3.5 h-3.5 text-stone-700" />
                             <span>Buka di Ponsel</span>
                         </span>
                         <p class="text-[11px] text-stone-500 leading-snug">Scan dengan kamera HP untuk membawa menu langsung ke meja.</p>
@@ -454,7 +452,7 @@
             </button>
 
             <div class="flex items-center justify-center gap-2 mb-1">
-                <img src="{{ asset('icons/retro/qr-scan.png') }}" class="w-6 h-6 rounded-lg object-contain shrink-0" alt="QR Code">
+                <x-vintage-icon name="qr-code" class="w-6 h-6 text-stone-900 shrink-0" />
                 <h3 class="text-base font-bold text-stone-900">QR Code Toko</h3>
             </div>
             <p class="text-xs text-stone-500 mb-4">{{ $store->name }}</p>
@@ -467,14 +465,12 @@
 
             <div class="flex gap-2 mt-5">
                 <button type="button" onclick="copyStoreUrl()" class="flex-1 py-2.5 rounded-xl border border-[#dcd4c5] bg-white hover:bg-[#faf7f2] text-stone-700 text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors">
-                    <img src="{{ asset('icons/retro/bagikan.png') }}" class="w-4 h-4 rounded-xs object-contain shrink-0" alt="Bagikan">
+                    <x-vintage-icon name="share-android" class="w-4 h-4 text-stone-600 shrink-0" />
                     <span>Salin Link</span>
                 </button>
                 <a href="{{ route('stores.qr', $store->slug) }}" class="flex-1 py-2.5 rounded-xl bg-[#1b4332] hover:bg-[#143326] text-[#f7f3eb] text-xs font-semibold flex items-center justify-center gap-1.5 shadow-2xs transition-colors">
+                    <x-vintage-icon name="printer" class="w-3.5 h-3.5 text-[#f7f3eb]" />
                     <span>Cetak QR Meja</span>
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
-                    </svg>
                 </a>
             </div>
         </div>

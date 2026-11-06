@@ -1,8 +1,9 @@
-@props(['name', 'class' => 'w-4 h-4'])
+@props(['name', 'pack' => 'print', 'class' => 'w-4 h-4'])
 
 @php
-    $resPath = resource_path("icons/print/{$name}.svg");
-    $pubPath = public_path("icons/print/{$name}.svg");
+    $folder = ($pack === 'brand' || $pack === 'brands') ? 'brands' : 'print';
+    $resPath = resource_path("icons/{$folder}/{$name}.svg");
+    $pubPath = public_path("icons/{$folder}/{$name}.svg");
     $svgContent = '';
 
     if (file_exists($resPath)) {
@@ -14,6 +15,9 @@
     if ($svgContent) {
         $svgContent = preg_replace('/(width|height)="\d+"/', '', $svgContent);
         $svgContent = preg_replace('/<svg\s+/', '<svg class="w-full h-full" ', $svgContent, 1);
+        if ($folder === 'brands' && !str_contains($svgContent, 'fill=')) {
+            $svgContent = preg_replace('/<path\s+/', '<path fill="currentColor" ', $svgContent, 1);
+        }
     }
 @endphp
 
@@ -21,6 +25,6 @@
     @if($svgContent)
         {!! $svgContent !!}
     @else
-        <img src="{{ asset("icons/print/{$name}.svg") }}" class="w-full h-full object-contain" alt="">
+        <img src="{{ asset("icons/{$folder}/{$name}.svg") }}" class="w-full h-full object-contain" alt="">
     @endif
 </span>

@@ -32,8 +32,8 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <!-- Step 1 -->
             <div class="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-sm space-y-3">
-                <div class="w-12 h-12 flex items-center justify-center">
-                    <img src="{{ asset('icons/retro/profil-toko.png') }}" class="w-12 h-12 rounded-2xl object-contain drop-shadow-xs" alt="Tulis Info Toko">
+                <div class="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-200/60 flex items-center justify-center text-[#b47b2b]">
+                    <x-vintage-icon name="pin" class="w-7 h-7 text-[#b47b2b]" />
                 </div>
                 <h3 class="text-lg font-bold text-slate-900">1. Tulis Info & Menu Toko</h3>
                 <p class="text-xs text-slate-500 leading-relaxed">
@@ -43,8 +43,8 @@
 
             <!-- Step 2 -->
             <div class="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-sm space-y-3">
-                <div class="w-12 h-12 flex items-center justify-center">
-                    <img src="{{ asset('icons/retro/qr-scan.png') }}" class="w-12 h-12 rounded-2xl object-contain drop-shadow-xs" alt="Cetak QR">
+                <div class="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-200/60 flex items-center justify-center text-emerald-700">
+                    <x-vintage-icon name="qr-code" class="w-7 h-7 text-emerald-700" />
                 </div>
                 <h3 class="text-lg font-bold text-slate-900">2. Download & Cetak Stiker QR</h3>
                 <p class="text-xs text-slate-500 leading-relaxed">
@@ -54,8 +54,8 @@
 
             <!-- Step 3 -->
             <div class="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-sm space-y-3">
-                <div class="w-12 h-12 flex items-center justify-center">
-                    <img src="{{ asset('icons/retro/menu.png') }}" class="w-12 h-12 rounded-2xl object-contain drop-shadow-xs" alt="Pelanggan Scan">
+                <div class="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-200/60 flex items-center justify-center text-[#b47b2b]">
+                    <x-vintage-icon name="cup" class="w-7 h-7 text-[#b47b2b]" />
                 </div>
                 <h3 class="text-lg font-bold text-slate-900">3. Pelanggan Tinggal Scan di HP</h3>
                 <p class="text-xs text-slate-500 leading-relaxed">
@@ -110,11 +110,11 @@
 
                         <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-medium">
                             <span class="inline-flex items-center gap-1.5">
-                                <img src="{{ asset('icons/retro/menu.png') }}" class="w-4 h-4 rounded-xs object-contain" alt="Menu">
+                                <x-vintage-icon name="cup" class="w-4 h-4 text-[#b47b2b]" />
                                 <span>{{ $store->products_count }} Menu</span>
                             </span>
                             <span class="inline-flex items-center gap-1.5">
-                                <img src="{{ asset('icons/retro/telepon.png') }}" class="w-4 h-4 rounded-xs object-contain" alt="Telepon">
+                                <x-vintage-icon name="phone" class="w-4 h-4 text-slate-500" />
                                 <span>{{ $store->phone }}</span>
                             </span>
                         </div>

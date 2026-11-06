@@ -40,8 +40,8 @@
             <div class="flex items-center justify-between h-16">
                 <!-- Brand Logo -->
                 <a href="{{ route('home') }}" class="flex items-center gap-2 group shrink-0">
-                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform">
-                        <img src="{{ asset('icons/retro/qr-scan.png') }}" class="w-full h-full object-contain rounded-xl drop-shadow-sm" alt="QRToko">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform bg-[#24160e] text-[#f2e7d5] p-2 shadow-xs border border-[#3d2417]">
+                        <x-vintage-icon name="qr-code" class="w-full h-full text-[#d4af7a]" />
                     </div>
                     <div class="flex items-center">
                         <span class="text-base sm:text-lg font-black tracking-tight text-slate-900 group-hover:text-emerald-600 transition-colors">QRToko</span>

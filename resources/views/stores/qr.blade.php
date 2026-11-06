@@ -36,9 +36,7 @@
         </div>
 
         <button type="button" onclick="window.print()" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center gap-2 shadow-md shadow-emerald-600/30 transition-all cursor-pointer">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
-            </svg>
+            <x-vintage-icon name="printer" class="w-4 h-4 text-white" />
             <span>Cetak Standee (Ctrl + P)</span>
         </button>
     </div>
@@ -48,7 +46,7 @@
         
         <!-- Top Badge -->
         <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-slate-900 text-white text-[11px] font-extrabold uppercase tracking-widest">
-            <img src="{{ asset('icons/retro/qr-scan.png') }}" class="w-4 h-4 rounded-xs object-contain" alt="QR">
+            <x-vintage-icon name="qr-code" class="w-4 h-4 text-white" />
             <span>SCAN DI SINI</span>
         </div>
 
@@ -85,7 +83,7 @@
         <div class="pt-4 border-t border-slate-200/80 flex items-center justify-between text-[10px] text-slate-500 font-semibold uppercase tracking-wider">
             <span>{{ $store->category }}</span>
             <span class="inline-flex items-center gap-1.5">
-                <img src="{{ asset('icons/retro/telepon.png') }}" class="w-3.5 h-3.5 rounded-xs object-contain" alt="Telepon">
+                <x-vintage-icon name="phone" class="w-3.5 h-3.5 text-slate-500" />
                 <span>{{ $store->phone }}</span>
             </span>
         </div>

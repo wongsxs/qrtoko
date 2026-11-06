@@ -85,14 +85,14 @@
                             <div class="mt-4 pt-3 border-t border-slate-100 space-y-2 text-xs text-slate-500 font-medium">
                                 <div class="flex items-center justify-between">
                                     <span class="inline-flex items-center gap-1.5">
-                                        <img src="{{ asset('icons/retro/menu.png') }}" class="w-3.5 h-3.5 rounded-xs object-contain" alt="Menu">
+                                        <x-vintage-icon name="cup" class="w-3.5 h-3.5 text-[#b47b2b]" />
                                         <span>Total Menu:</span>
                                     </span>
                                     <strong class="text-slate-800">{{ $store->products_count }} item</strong>
                                 </div>
                                 <div class="flex items-center justify-between">
                                     <span class="inline-flex items-center gap-1.5">
-                                        <img src="{{ asset('icons/retro/whatsapp.png') }}" class="w-3.5 h-3.5 rounded-xs object-contain" alt="WhatsApp">
+                                        <x-vintage-icon name="whatsapp" pack="brand" class="w-3.5 h-3.5 text-emerald-600" />
                                         <span>WhatsApp:</span>
                                     </span>
                                     <span class="text-slate-700">{{ $store->phone }}</span>
